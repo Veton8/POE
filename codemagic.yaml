@@ -36,7 +36,9 @@ workflows:
         script: |
           set -e
           mkdir -p ios
-          "$GODOT_BIN" --headless --export-debug "iOS" "ios/path_of_evil.xcodeproj"
+          # --verbose surfaces the actual validation reasons; without it
+          # Godot just says "configuration errors:" with no specifics.
+          "$GODOT_BIN" --headless --verbose --export-debug "iOS" "ios/path_of_evil.xcodeproj" 2>&1
           ls -la ios/
 
       - name: Build with ad-hoc signing
