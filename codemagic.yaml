@@ -1,15 +1,12 @@
 workflows:
-  ios-debug:
-    name: iOS Debug (free Apple ID + AltStore)
+  ios-altstore:
+    name: iOS unsigned IPA (sideload via AltStore)
     instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
       vars:
         GODOT_VERSION: "4.6.2"
         BUNDLE_ID: "com.pathofevil.game"
-      ios_signing:
-        distribution_type: development
-        bundle_identifier: $BUNDLE_ID
     scripts:
       - name: Install Godot for macOS
         script: |
@@ -35,28 +32,47 @@ workflows:
           set -e
           "$GODOT_BIN" --headless --import . || true
 
-      - name: Export iOS Xcode project
+      - name: Export Xcode project from Godot
         script: |
           set -e
           mkdir -p ios
           "$GODOT_BIN" --headless --export-debug "iOS" "ios/path_of_evil.xcodeproj"
+          ls -la ios/
 
-      - name: Build signed IPA
+      - name: Build with ad-hoc signing
         script: |
           set -e
           cd ios
+          SCHEME=$(xcodebuild -list -project path_of_evil.xcodeproj -json 2>/dev/null \
+            | python3 -c "import json,sys; print(json.load(sys.stdin)['project']['schemes'][0])")
+          echo "Detected scheme: $SCHEME"
           xcodebuild -project path_of_evil.xcodeproj \
-            -scheme path_of_evil \
+            -scheme "$SCHEME" \
             -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath build/path_of_evil.xcarchive \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
             archive
-          xcodebuild -exportArchive \
-            -archivePath build/path_of_evil.xcarchive \
-            -exportPath build \
-            -exportOptionsPlist ../export_options.plist
+
+      - name: Package as IPA for AltStore
+        script: |
+          set -e
+          cd ios/build
+          mkdir -p Payload
+          APP_DIR=$(find path_of_evil.xcarchive/Products/Applications -maxdepth 1 -name "*.app" -type d | head -1)
+          if [ -z "$APP_DIR" ]; then
+            echo "No .app found in archive — listing for debugging:"
+            ls -R path_of_evil.xcarchive/
+            exit 1
+          fi
+          echo "Packaging: $APP_DIR"
+          cp -R "$APP_DIR" Payload/
+          zip -qr path_of_evil_unsigned.ipa Payload
+          ls -lh path_of_evil_unsigned.ipa
     artifacts:
-      - ios/build/*.ipa
+      - ios/build/path_of_evil_unsigned.ipa
     publishing:
       email:
         recipients:
