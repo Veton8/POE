@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://b5roguestats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+[ext_resource type="Texture2D" path="res://art/characters/player_rogue.svg" id="2_pt"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Rogue"
+max_hp = 4
+move_speed = 110.0
+damage = 1
+fire_rate = 5.5
+bullet_speed = 240.0
+crit_chance = 0.15
+crit_multiplier = 2.0
+detection_radius = 130.0
+portrait = ExtResource("2_pt")

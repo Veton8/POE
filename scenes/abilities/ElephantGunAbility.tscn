@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_egun"]
+
+[ext_resource type="Script" path="res://scenes/abilities/ElephantGunAbility.gd" id="1_eg"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_elephantgun.svg" id="2_ic"]
+
+[node name="ElephantGunAbility" type="Node"]
+script = ExtResource("1_eg")
+icon = ExtResource("2_ic")

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://b5rd_s_1"]
+
+[ext_resource type="Script" path="res://resources/RoomData.gd" id="1_rd"]
+[ext_resource type="Resource" uid="uid://b5wave_s_r1" path="res://resources/data/waves/sunken_r1_w1.tres" id="2_w1"]
+
+[resource]
+script = ExtResource("1_rd")
+waves = Array[WaveData]([ExtResource("2_w1")])
+is_boss = false
+is_reward = false
+layout_text = "##############  ##############
+#............................#
+#............................#
+#............................#
+#......,.....................#
+#............................#
+#............................#
+#............................#
+#............................#
+#............................#
+#............................#
+#............................#
+#............................#
+#............................#
+#......................,.....#
+#............................#
+##############################"

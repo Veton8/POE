@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_hinokami"]
+
+[ext_resource type="Script" path="res://scenes/abilities/HinokamiSlashAbility.gd" id="1_hk"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_entei.svg" id="2_ic"]
+
+[node name="HinokamiSlashAbility" type="Node"]
+script = ExtResource("1_hk")
+icon = ExtResource("2_ic")

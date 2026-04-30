@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_aura"]
+
+[ext_resource type="Script" path="res://scenes/components/AuraComponent.gd" id="1_aura"]
+
+[node name="AuraComponent" type="Node2D"]
+script = ExtResource("1_aura")
+radius = 36.0
+damage_per_tick = 1
+tick_interval = 0.6

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5enm_mt01"]
+
+[ext_resource type="PackedScene" uid="uid://b5enmbase01" path="res://scenes/enemies/EnemyBase.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://b5enmst_mt" path="res://resources/data/enemies/mossback_tank_stats.tres" id="2_st"]
+[ext_resource type="Texture2D" path="res://art/enemies/mossback_tank.svg" id="3_tex"]
+
+[node name="MossbackTank" instance=ExtResource("1_base")]
+stats = ExtResource("2_st")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_tex")

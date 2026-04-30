@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://b5narutostats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+[ext_resource type="SpriteFrames" uid="uid://b5narutofr" path="res://art/characters/naruto/naruto_frames.tres" id="2_fr"]
+[ext_resource type="PackedScene" uid="uid://b5plybul_ki" path="res://scenes/projectiles/PlayerBulletKi.tscn" id="3_bul"]
+[ext_resource type="PackedScene" uid="uid://b5ab_shadowclone" path="res://scenes/abilities/ShadowCloneAbility.tscn" id="4_q"]
+[ext_resource type="PackedScene" uid="uid://b5ab_kaio" path="res://scenes/abilities/KaiokenAbility.tscn" id="5_w"]
+[ext_resource type="PackedScene" uid="uid://b5ab_hiken" path="res://scenes/abilities/HikenAbility.tscn" id="6_e"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Naruto Uzumaki"
+max_hp = 7
+move_speed = 105.0
+damage = 2
+fire_rate = 3.5
+bullet_speed = 200.0
+crit_chance = 0.08
+crit_multiplier = 1.8
+detection_radius = 130.0
+frames = ExtResource("2_fr")
+bullet_scene = ExtResource("3_bul")
+ability_q = ExtResource("4_q")
+ability_w = ExtResource("5_w")
+ability_e = ExtResource("6_e")

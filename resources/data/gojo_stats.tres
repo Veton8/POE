@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=8 format=3 uid="uid://b5gojostats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+[ext_resource type="Texture2D" path="res://art/characters/player_gojo.svg" id="2_pt"]
+[ext_resource type="SpriteFrames" uid="uid://b5gojoframes" path="res://art/characters/gojo/gojo_frames.tres" id="3_fr"]
+[ext_resource type="PackedScene" uid="uid://b5plybul_red" path="res://scenes/projectiles/PlayerBulletRed.tscn" id="4_bul"]
+[ext_resource type="PackedScene" uid="uid://b5ab_blue" path="res://scenes/abilities/BlueAbility.tscn" id="5_q"]
+[ext_resource type="PackedScene" uid="uid://b5ab_hpurp" path="res://scenes/abilities/HollowPurpleAbility.tscn" id="6_w"]
+[ext_resource type="PackedScene" uid="uid://b5ab_uvoid" path="res://scenes/abilities/UnlimitedVoidAbility.tscn" id="7_e"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Gojo"
+max_hp = 5
+move_speed = 110.0
+damage = 2
+fire_rate = 5.0
+bullet_speed = 280.0
+crit_chance = 0.15
+crit_multiplier = 2.0
+detection_radius = 160.0
+portrait = ExtResource("2_pt")
+frames = ExtResource("3_fr")
+bullet_scene = ExtResource("4_bul")
+ability_q = ExtResource("5_q")
+ability_w = ExtResource("6_w")
+ability_e = ExtResource("7_e")

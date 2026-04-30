@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_crit"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeStatModifier.gd" id="2_um"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2_um")
+stat_path = NodePath("stats:crit_chance")
+op = 0
+value = 0.05
+hyperbolic_coefficient = 0.15
+
+[resource]
+script = ExtResource("1_ud")
+id = &"crit_lens"
+display_name = "Crit Lens"
+effect_text = "+5% critical chance"
+flavor_text = "See the seam in the shell."
+category = 4
+rarity = 1
+stack_mode = 2
+max_stacks = 4
+weight = 1.0
+tags = Array[StringName]([&"crit", &"damage"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([SubResource("mod_1")])
+component_to_attach = null
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"eye"
+icon_color_primary = Color(1.0, 0.9, 0.4, 1)
+icon_color_accent = Color(0.5, 0.3, 0.05, 1)

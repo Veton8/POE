@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=8 format=3 uid="uid://b5gokustats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+[ext_resource type="Texture2D" path="res://art/characters/player_goku.svg" id="2_pt"]
+[ext_resource type="SpriteFrames" uid="uid://b5gokuframes" path="res://art/characters/goku/goku_frames.tres" id="3_fr"]
+[ext_resource type="PackedScene" uid="uid://b5plybul_ki" path="res://scenes/projectiles/PlayerBulletKi.tscn" id="4_bul"]
+[ext_resource type="PackedScene" uid="uid://b5ab_sbomb" path="res://scenes/abilities/SpiritBombAbility.tscn" id="5_q"]
+[ext_resource type="PackedScene" uid="uid://b5ab_kame" path="res://scenes/abilities/KamehamehaAbility.tscn" id="6_w"]
+[ext_resource type="PackedScene" uid="uid://b5ab_kaio" path="res://scenes/abilities/KaiokenAbility.tscn" id="7_e"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Goku"
+max_hp = 7
+move_speed = 100.0
+damage = 2
+fire_rate = 4.5
+bullet_speed = 260.0
+crit_chance = 0.10
+crit_multiplier = 2.0
+detection_radius = 140.0
+portrait = ExtResource("2_pt")
+frames = ExtResource("3_fr")
+bullet_scene = ExtResource("4_bul")
+ability_q = ExtResource("5_q")
+ability_w = ExtResource("6_w")
+ability_e = ExtResource("7_e")

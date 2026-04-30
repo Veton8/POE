@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_thunderspear"]
+
+[ext_resource type="Script" path="res://scenes/abilities/ThunderSpearAbility.gd" id="1_ts"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_kamehameha.svg" id="2_ic"]
+
+[node name="ThunderSpearAbility" type="Node"]
+script = ExtResource("1_ts")
+icon = ExtResource("2_ic")

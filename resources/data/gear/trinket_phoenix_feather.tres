@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://b5gear_t_phnx"]
+
+[ext_resource type="Script" path="res://resources/GearItem.gd" id="1_gi"]
+[ext_resource type="Texture2D" path="res://art/ui/gear/trinket_phoenix_feather.svg" id="2_ic"]
+
+[resource]
+script = ExtResource("1_gi")
+item_id = "trinket_phoenix_feather"
+item_name = "Phoenix Feather"
+type = "trinket"
+rarity = 3
+hp_bonus = 2
+damage_bonus = 0.5
+speed_bonus = 0.0
+crit_bonus = 0.10
+icon = ExtResource("2_ic")
+description = "Still warm. Still angry."

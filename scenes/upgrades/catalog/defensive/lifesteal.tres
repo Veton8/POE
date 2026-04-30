@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_life"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_life" path="res://scenes/components/LifestealProc.tscn" id="2_life"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"lifesteal"
+display_name = "Lifesteal"
+effect_text = "Every 6th hit heals 1 HP"
+flavor_text = "Pay the body, take the breath."
+category = 2
+rarity = 2
+stack_mode = 3
+max_stacks = 1
+weight = 0.85
+tags = Array[StringName]([&"defense", &"on_hit", &"heal"])
+hero_affinity = Array[StringName]([&"luffy", &"goku"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_life")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"cross"
+icon_color_primary = Color(1.0, 0.4, 0.5, 1)
+icon_color_accent = Color(0.5, 0.1, 0.1, 1)

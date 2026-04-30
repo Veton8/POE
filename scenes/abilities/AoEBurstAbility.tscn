@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_burst"]
+
+[ext_resource type="Script" path="res://scenes/abilities/AoEBurstAbility.gd" id="1_burst"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_burst.svg" id="2_ic"]
+
+[node name="AoEBurstAbility" type="Node"]
+script = ExtResource("1_burst")
+icon = ExtResource("2_ic")

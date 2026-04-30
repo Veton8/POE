@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_spirit"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"spirit_bomb"
+display_name = "Spirit Bomb"
+effect_text = "+5% damage per kill (max +200%, resets on damage)"
+flavor_text = "Lend me your energy."
+category = 5
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 0.4
+tags = Array[StringName]([&"anime", &"legendary", &"ramp"])
+hero_affinity = Array[StringName]([&"goku"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_spirit_bomb"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"orb"
+icon_color_primary = Color(0.9, 1.0, 0.5, 1)
+icon_color_accent = Color(0.4, 0.5, 0.1, 1)

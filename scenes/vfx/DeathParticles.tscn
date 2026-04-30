@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5deathvfx01"]
+
+[sub_resource type="GDScript" id="gd_death"]
+script/source = "extends GPUParticles2D
+
+func emit_burst() -> void:
+	restart()
+	emitting = true
+	await get_tree().create_timer(lifetime + 0.05).timeout
+	if is_instance_valid(self):
+		queue_free()
+"
+
+[sub_resource type="Gradient" id="grad_death"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.6, 0.2, 1, 0.4, 0.1, 0.05, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ppm_death"]
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 60.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.6
+color_ramp = SubResource("grad_death")
+damping_min = 100.0
+damping_max = 140.0
+
+[node name="DeathParticles" type="GPUParticles2D"]
+amount = 16
+lifetime = 0.45
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ppm_death")
+script = SubResource("gd_death")

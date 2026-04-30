@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_gear"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"gear_ramp"
+display_name = "Gear Ramp"
+effect_text = "Each consecutive bullet hit ramps fire rate (max +60%, resets on damage)"
+flavor_text = "Gear Two!"
+category = 5
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.65
+tags = Array[StringName]([&"anime", &"fire_rate", &"ramp"])
+hero_affinity = Array[StringName]([&"luffy"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_gear_ramp"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"flame"
+icon_color_primary = Color(1.0, 0.4, 0.4, 1)
+icon_color_accent = Color(0.5, 0.0, 0.0, 1)

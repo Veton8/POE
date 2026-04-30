@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5plybul_crsd"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/Bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" path="res://art/projectiles/bullet_cursed_blue.svg" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bul"]
+radius = 2.5
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 32
+collision_mask = 17
+script = ExtResource("1_bullet")
+burn_dps = 0.0
+burn_duration = 0.0
+pull_distance = 4.0
+pierce_count = 0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bul")

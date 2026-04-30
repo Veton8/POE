@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://b5gear_a_chain"]
+
+[ext_resource type="Script" path="res://resources/GearItem.gd" id="1_gi"]
+[ext_resource type="Texture2D" path="res://art/ui/gear/armor_chainmail.svg" id="2_ic"]
+
+[resource]
+script = ExtResource("1_gi")
+item_id = "armor_chainmail"
+item_name = "Chainmail"
+type = "armor"
+rarity = 1
+hp_bonus = 2
+damage_bonus = 0.0
+speed_bonus = -2.0
+crit_bonus = 0.0
+icon = ExtResource("2_ic")
+description = "Sturdy links — slows you down a touch."

@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b5gojoframes"]
+
+[ext_resource type="Texture2D" path="res://art/characters/gojo/gojo_idle_1.svg" id="1_i1"]
+[ext_resource type="Texture2D" path="res://art/characters/gojo/gojo_idle_2.svg" id="2_i2"]
+[ext_resource type="Texture2D" path="res://art/characters/gojo/gojo_walk_1.svg" id="3_w1"]
+[ext_resource type="Texture2D" path="res://art/characters/gojo/gojo_walk_2.svg" id="4_w2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]

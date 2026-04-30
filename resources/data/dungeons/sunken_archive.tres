@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DungeonData" load_steps=12 format=3 uid="uid://b5dgn_archive"]
+
+[ext_resource type="Script" path="res://resources/DungeonData.gd" id="1_dd"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_1" path="res://scenes/rooms/sunken/SunkenRoom_1.tscn" id="2_r1"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_2" path="res://scenes/rooms/sunken/SunkenRoom_2.tscn" id="3_r2"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_3" path="res://scenes/rooms/sunken/SunkenRoom_3.tscn" id="4_r3"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_4" path="res://scenes/rooms/sunken/SunkenRoom_4.tscn" id="5_r4"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_5" path="res://scenes/rooms/sunken/SunkenRoom_5.tscn" id="6_r5"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_6" path="res://scenes/rooms/sunken/SunkenRoom_6.tscn" id="7_r6"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_7" path="res://scenes/rooms/sunken/SunkenRoom_7.tscn" id="8_r7"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_8" path="res://scenes/rooms/sunken/SunkenRoom_8.tscn" id="9_r8"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_9" path="res://scenes/rooms/sunken/SunkenRoom_9.tscn" id="10_r9"]
+[ext_resource type="PackedScene" uid="uid://b5sroom_10" path="res://scenes/rooms/sunken/SunkenRoom_10.tscn" id="11_r10"]
+
+[resource]
+script = ExtResource("1_dd")
+dungeon_id = "sunken_archive"
+display_name = "Sunken Archive"
+lore = "A flooded library of sniper towers and breakable bookshelves. Every line of sight is a fight; every pillar is a temporary shield."
+room_scenes = Array[PackedScene]([ExtResource("2_r1"), ExtResource("3_r2"), ExtResource("4_r3"), ExtResource("5_r4"), ExtResource("6_r5"), ExtResource("7_r6"), ExtResource("8_r7"), ExtResource("9_r8"), ExtResource("10_r9"), ExtResource("11_r10")])
+theme_color = Color(0.08, 0.12, 0.22, 1)
+difficulty_stars = 3
+recommended_archetype = "Burst / DoT"
+signature_gimmick = "Long sightlines + breakable cover"
+unlock_requirement = "complete:verdant_crypt"

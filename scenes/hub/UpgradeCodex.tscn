@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b5codexui"]
+
+[ext_resource type="Script" path="res://scenes/hub/UpgradeCodex.gd" id="1_cdx"]
+
+[node name="UpgradeCodex" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_cdx")

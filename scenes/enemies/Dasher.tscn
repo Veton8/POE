@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5dasher001"]
+
+[ext_resource type="PackedScene" uid="uid://b5enmbase01" path="res://scenes/enemies/EnemyBase.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://art/enemies/dasher.svg" id="2_tex"]
+
+[node name="Dasher" instance=ExtResource("1_base")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_tex")

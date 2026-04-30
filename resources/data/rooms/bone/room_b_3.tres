@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://b5rd_b_3"]
+
+[ext_resource type="Script" path="res://resources/RoomData.gd" id="1_rd"]
+[ext_resource type="PackedScene" uid="uid://b5boss_ca01" path="res://scenes/enemies/bosses/bone/ChoirAcolyte.tscn" id="2_bs"]
+
+[resource]
+script = ExtResource("1_rd")
+waves = Array[WaveData]([])
+is_boss = true
+boss_scene = ExtResource("2_bs")
+is_reward = false
+layout_text = "##############  ##############
+#............................#
+#............................#
+#............................#
+#......##............##......#
+#............................#
+#............................#
+#............................#
+#.............,,.............#
+#............................#
+#............................#
+#............................#
+#......##............##......#
+#............................#
+#............................#
+#............................#
+##############################"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b5bossst_tb"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Thorn Brute"
+max_hp = 80
+move_speed = 60.0
+contact_damage = 2
+ranged = false
+fire_rate = 1.0
+bullet_speed = 130.0
+bullet_damage = 1
+detection_radius = 220.0
+xp_reward = 20

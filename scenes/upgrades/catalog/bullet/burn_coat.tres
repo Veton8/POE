@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_burn"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"burn_coat"
+display_name = "Burn Coat"
+effect_text = "Bullets ignite enemies for 2 dps over 2s"
+flavor_text = "Coat the tip in pitch."
+category = 0
+rarity = 1
+stack_mode = 2
+max_stacks = 2
+weight = 1.0
+tags = Array[StringName]([&"projectile", &"fire", &"dot"])
+hero_affinity = Array[StringName]([&"ace"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_burn_coat"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"flame"
+icon_color_primary = Color(1.0, 0.5, 0.2, 1)
+icon_color_accent = Color(0.6, 0.1, 0.05, 1)

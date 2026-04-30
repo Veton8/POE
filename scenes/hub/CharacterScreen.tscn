@@ -1,0 +1,213 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5charscr001"]
+
+[ext_resource type="Script" path="res://scenes/hub/CharacterScreen.gd" id="1_chr"]
+[ext_resource type="Texture2D" path="res://art/characters/player_knight.svg" id="2_kn"]
+
+[node name="CharacterScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_chr")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="PanelBorder" type="ColorRect" parent="."]
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 461.0
+offset_bottom = 251.0
+color = Color(0.086, 0.130, 0.243, 1)
+
+[node name="Panel" type="ColorRect" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 460.0
+offset_bottom = 250.0
+color = Color(0.102, 0.102, 0.180, 1)
+
+[node name="BackButton" type="Button" parent="Panel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 22.0
+text = "Back"
+
+[node name="Left" type="Control" parent="Panel"]
+offset_left = 6.0
+offset_top = 26.0
+offset_right = 174.0
+offset_bottom = 224.0
+
+[node name="PortraitFrame" type="ColorRect" parent="Panel/Left"]
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 144.0
+offset_bottom = 124.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="Portrait" type="TextureRect" parent="Panel/Left/PortraitFrame"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 108.0
+offset_bottom = 108.0
+texture = ExtResource("2_kn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LockedOverlay" type="TextureRect" parent="Panel/Left/PortraitFrame"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
+visible = false
+modulate = Color(1, 0.4, 0.4, 0.8)
+
+[node name="NameLabel" type="Label" parent="Panel/Left"]
+offset_left = 8.0
+offset_top = 132.0
+offset_right = 160.0
+offset_bottom = 148.0
+text = "Knight"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="Panel/Left"]
+offset_left = 8.0
+offset_top = 148.0
+offset_right = 160.0
+offset_bottom = 162.0
+text = "Lv 1"
+horizontal_alignment = 1
+
+[node name="Arrows" type="HBoxContainer" parent="Panel/Left"]
+offset_left = 8.0
+offset_top = 166.0
+offset_right = 160.0
+offset_bottom = 184.0
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="Panel/Left/Arrows"]
+custom_minimum_size = Vector2(40, 18)
+text = "<"
+
+[node name="NextButton" type="Button" parent="Panel/Left/Arrows"]
+custom_minimum_size = Vector2(40, 18)
+text = ">"
+
+[node name="UnlockButton" type="Button" parent="Panel/Left"]
+offset_left = 32.0
+offset_top = 188.0
+offset_right = 136.0
+offset_bottom = 206.0
+visible = false
+text = "UNLOCK"
+
+[node name="Right" type="Control" parent="Panel"]
+offset_left = 180.0
+offset_top = 26.0
+offset_right = 434.0
+offset_bottom = 224.0
+
+[node name="StatsHeader" type="Label" parent="Panel/Right"]
+offset_top = 0.0
+offset_right = 254.0
+offset_bottom = 14.0
+text = "STATS"
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="Panel/Right"]
+offset_top = 18.0
+offset_right = 254.0
+offset_bottom = 90.0
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/Right/Stats"]
+
+[node name="Name" type="Label" parent="Panel/Right/Stats/HPRow"]
+custom_minimum_size = Vector2(80, 14)
+text = "HP"
+
+[node name="Value" type="Label" parent="Panel/Right/Stats/HPRow"]
+custom_minimum_size = Vector2(40, 14)
+text = "0"
+horizontal_alignment = 2
+
+[node name="Preview" type="Label" parent="Panel/Right/Stats/HPRow"]
+custom_minimum_size = Vector2(60, 14)
+modulate = Color(0.2, 0.85, 0.4, 1)
+text = ""
+
+[node name="DamageRow" type="HBoxContainer" parent="Panel/Right/Stats"]
+
+[node name="Name" type="Label" parent="Panel/Right/Stats/DamageRow"]
+custom_minimum_size = Vector2(80, 14)
+text = "Damage"
+
+[node name="Value" type="Label" parent="Panel/Right/Stats/DamageRow"]
+custom_minimum_size = Vector2(40, 14)
+text = "0"
+horizontal_alignment = 2
+
+[node name="Preview" type="Label" parent="Panel/Right/Stats/DamageRow"]
+custom_minimum_size = Vector2(60, 14)
+modulate = Color(0.2, 0.85, 0.4, 1)
+text = ""
+
+[node name="SpeedRow" type="HBoxContainer" parent="Panel/Right/Stats"]
+
+[node name="Name" type="Label" parent="Panel/Right/Stats/SpeedRow"]
+custom_minimum_size = Vector2(80, 14)
+text = "Speed"
+
+[node name="Value" type="Label" parent="Panel/Right/Stats/SpeedRow"]
+custom_minimum_size = Vector2(40, 14)
+text = "0"
+horizontal_alignment = 2
+
+[node name="Preview" type="Label" parent="Panel/Right/Stats/SpeedRow"]
+custom_minimum_size = Vector2(60, 14)
+modulate = Color(0.2, 0.85, 0.4, 1)
+text = ""
+
+[node name="CritRow" type="HBoxContainer" parent="Panel/Right/Stats"]
+
+[node name="Name" type="Label" parent="Panel/Right/Stats/CritRow"]
+custom_minimum_size = Vector2(80, 14)
+text = "Crit Chance"
+
+[node name="Value" type="Label" parent="Panel/Right/Stats/CritRow"]
+custom_minimum_size = Vector2(40, 14)
+text = "0%"
+horizontal_alignment = 2
+
+[node name="Preview" type="Label" parent="Panel/Right/Stats/CritRow"]
+custom_minimum_size = Vector2(60, 14)
+modulate = Color(0.2, 0.85, 0.4, 1)
+text = ""
+
+[node name="AbilityHeader" type="Label" parent="Panel/Right"]
+offset_top = 96.0
+offset_right = 254.0
+offset_bottom = 110.0
+text = "ABILITIES"
+horizontal_alignment = 1
+
+[node name="AbilityRow" type="HBoxContainer" parent="Panel/Right"]
+offset_top = 114.0
+offset_right = 254.0
+offset_bottom = 144.0
+alignment = 1
+
+[node name="UpgradeButton" type="Button" parent="Panel/Right"]
+offset_left = 0.0
+offset_top = 152.0
+offset_right = 124.0
+offset_bottom = 172.0
+text = "UPGRADE"
+
+[node name="SelectButton" type="Button" parent="Panel/Right"]
+offset_left = 130.0
+offset_top = 152.0
+offset_right = 254.0
+offset_bottom = 172.0
+text = "SELECT"

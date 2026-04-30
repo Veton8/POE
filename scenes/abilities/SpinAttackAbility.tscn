@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_spin"]
+
+[ext_resource type="Script" path="res://scenes/abilities/SpinAttackAbility.gd" id="1_sp"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_burst.svg" id="2_ic"]
+
+[node name="SpinAttackAbility" type="Node"]
+script = ExtResource("1_sp")
+icon = ExtResource("2_ic")

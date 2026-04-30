@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5player001"]
+
+[ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_ply"]
+[ext_resource type="Script" path="res://scenes/components/HealthComponent.gd" id="2_hp"]
+[ext_resource type="Script" path="res://scenes/components/HurtboxComponent.gd" id="3_hurt"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_flash"]
+[ext_resource type="PackedScene" uid="uid://b5plybul001" path="res://scenes/projectiles/PlayerBullet.tscn" id="5_bul"]
+[ext_resource type="Script" path="res://scenes/abilities/DashAbility.gd" id="6_dash"]
+[ext_resource type="Script" path="res://scenes/abilities/AoEBurstAbility.gd" id="7_aoe"]
+[ext_resource type="Script" path="res://scenes/abilities/HealAbility.gd" id="8_heal"]
+[ext_resource type="Texture2D" path="res://art/vfx/shadow.svg" id="10_shd"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_dash.svg" id="11_ic_dash"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_burst.svg" id="12_ic_burst"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_heal.svg" id="13_ic_heal"]
+
+[sub_resource type="CircleShape2D" id="cs_body"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="cs_det"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="cs_hurt"]
+radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="mat_flash"]
+resource_local_to_scene = true
+shader = ExtResource("4_flash")
+shader_parameter/active = false
+shader_parameter/flash_color = Vector3(1, 1, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 10
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_ply")
+bullet_scene = ExtResource("5_bul")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("mat_flash")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, 7)
+z_index = -1
+texture = ExtResource("10_shd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("cs_body")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("cs_det")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "sprite_to_flash")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_hurt")
+health = NodePath("../HealthComponent")
+sprite_to_flash = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("cs_hurt")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_hp")
+max_hp = 6
+invuln_seconds = 0.6
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(5, -2)
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = false
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="DashAbility" type="Node" parent="Abilities"]
+script = ExtResource("6_dash")
+icon = ExtResource("11_ic_dash")
+
+[node name="AoEBurstAbility" type="Node" parent="Abilities"]
+script = ExtResource("7_aoe")
+icon = ExtResource("12_ic_burst")
+
+[node name="HealAbility" type="Node" parent="Abilities"]
+script = ExtResource("8_heal")
+icon = ExtResource("13_ic_heal")

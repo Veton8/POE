@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_gatling"]
+
+[ext_resource type="Script" path="res://scenes/abilities/JetGatlingAbility.gd" id="1_jg"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_gatling.svg" id="2_ic"]
+
+[node name="JetGatlingAbility" type="Node"]
+script = ExtResource("1_jg")
+icon = ExtResource("2_ic")

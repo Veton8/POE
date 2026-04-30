@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_bigbullet"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"big_bullet"
+display_name = "Big Bullet"
+effect_text = "+2 damage, larger projectiles, -15% fire rate"
+flavor_text = "Quality over quantity."
+category = 0
+rarity = 1
+stack_mode = 2
+max_stacks = 2
+weight = 1.0
+tags = Array[StringName]([&"projectile", &"damage"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_big_bullet"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"orb"
+icon_color_primary = Color(1, 0.7, 0.2, 1)
+icon_color_accent = Color(0.5, 0.3, 0.05, 1)

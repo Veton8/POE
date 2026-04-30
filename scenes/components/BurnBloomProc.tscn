@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_bloom"]
+
+[ext_resource type="Script" path="res://scenes/components/ProcOnKillComponent.gd" id="1_bloom"]
+
+[node name="BurnBloomProc" type="Node"]
+script = ExtResource("1_bloom")
+proc_id = &"burn_bloom"
+trigger_every_n_kills = 2
+burn_dps = 3.0
+burn_duration = 2.5
+radius = 32.0

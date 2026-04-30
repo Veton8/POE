@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_revive"]
+
+[ext_resource type="Script" path="res://scenes/components/ReviveComponent.gd" id="1_revive"]
+
+[node name="ReviveComponent" type="Node"]
+script = ExtResource("1_revive")
+revive_hp_pct = 0.5
+i_frames_seconds = 1.5

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_hollow"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"hollow_mask"
+display_name = "Hollow Mask"
+effect_text = "Below 40% HP: deal +60% damage"
+flavor_text = "I never asked for this strength."
+category = 5
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.65
+tags = Array[StringName]([&"anime", &"low_hp", &"damage"])
+hero_affinity = Array[StringName]([&"eren_yeager"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_hollow_mask"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"flame"
+icon_color_primary = Color(0.95, 0.95, 1.0, 1)
+icon_color_accent = Color(0.2, 0.0, 0.0, 1)

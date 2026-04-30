@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5sroom_8"]
+
+[ext_resource type="PackedScene" uid="uid://b5sroombase" path="res://scenes/rooms/sunken/SunkenRoomBase.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://b5rd_s_8" path="res://resources/data/rooms/sunken/room_s_8.tres" id="2_data"]
+
+[node name="SunkenRoom_8" instance=ExtResource("1_base")]
+room_data = ExtResource("2_data")

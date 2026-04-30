@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://b5gear_w_iron"]
+
+[ext_resource type="Script" path="res://resources/GearItem.gd" id="1_gi"]
+[ext_resource type="Texture2D" path="res://art/ui/gear/weapon_iron_sword.svg" id="2_ic"]
+
+[resource]
+script = ExtResource("1_gi")
+item_id = "weapon_iron_sword"
+item_name = "Iron Sword"
+type = "weapon"
+rarity = 0
+hp_bonus = 0
+damage_bonus = 0.5
+speed_bonus = 0.0
+crit_bonus = 0.0
+icon = ExtResource("2_ic")
+description = "A simple, reliable blade."

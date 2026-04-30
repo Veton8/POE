@@ -1,0 +1,29 @@
+# Godot 4 cache (per-user, machine-specific)
+.godot/
+
+# Imported translations (auto-generated)
+*.translation
+
+# OS detritus
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+builds/
+android/build/
+ios/
+ios_xcode/
+
+# Signing material — NEVER commit these
+*.keystore
+*.jks
+*.p12
+*.pem
+*.mobileprovision
+*.cer
+*.p8
+release.keystore
+
+# Editor-local
+.vscode/
+.idea/

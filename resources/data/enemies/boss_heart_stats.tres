@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b5bossst_hrt"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Heart of Overgrowth"
+max_hp = 320
+move_speed = 10.0
+contact_damage = 1
+ranged = true
+fire_rate = 1.0
+bullet_speed = 130.0
+bullet_damage = 2
+detection_radius = 300.0
+xp_reward = 80

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_orbit"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_orbit" path="res://scenes/components/OrbitalComponent.tscn" id="2_orb"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"orbital_stones"
+display_name = "Orbital Stones"
+effect_text = "2 stones orbit you, damaging touched enemies"
+flavor_text = "Old gravity, old grudge."
+category = 1
+rarity = 1
+stack_mode = 3
+max_stacks = 1
+weight = 1.0
+tags = Array[StringName]([&"orbital", &"autocast"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_orb")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"ring"
+icon_color_primary = Color(0.8, 0.85, 1.0, 1)
+icon_color_accent = Color(0.3, 0.4, 0.6, 1)

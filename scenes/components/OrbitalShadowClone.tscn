@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_clone"]
+
+[ext_resource type="Script" path="res://scenes/components/OrbitalComponent.gd" id="1_clone"]
+
+[node name="OrbitalShadowClone" type="Node2D"]
+script = ExtResource("1_clone")
+orb_count = 3
+orbit_radius = 28.0
+orbit_speed = 5.0
+orb_radius = 4.5
+orb_damage = 2
+hit_cooldown = 0.4
+color = Color(1.0, 0.7, 0.2, 1.0)

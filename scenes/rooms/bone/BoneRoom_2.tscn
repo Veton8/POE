@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5broom_2"]
+
+[ext_resource type="PackedScene" uid="uid://b5broombase" path="res://scenes/rooms/bone/BoneRoomBase.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://b5rd_b_2" path="res://resources/data/rooms/bone/room_b_2.tres" id="2_data"]
+
+[node name="BoneRoom_2" instance=ExtResource("1_base")]
+room_data = ExtResource("2_data")

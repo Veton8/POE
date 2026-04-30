@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_shock"]
+
+[ext_resource type="Script" path="res://scenes/components/ProcOnDodgeComponent.gd" id="1_shock"]
+
+[node name="ShockwaveStepProc" type="Node"]
+script = ExtResource("1_shock")
+proc_id = &"shockwave"
+damage = 4
+radius = 48.0

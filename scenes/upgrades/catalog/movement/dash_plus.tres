@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_dashp"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"dash_plus"
+display_name = "Dash+"
+effect_text = "Dash cooldown -25% (per stack)"
+flavor_text = "Faster on the comma."
+category = 3
+rarity = 0
+stack_mode = 2
+max_stacks = 3
+weight = 1.0
+tags = Array[StringName]([&"movement", &"dash"])
+hero_affinity = Array[StringName]([&"levi_ackerman"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_dash_plus"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"arrow"
+icon_color_primary = Color(0.6, 0.95, 1.0, 1)
+icon_color_accent = Color(0.1, 0.3, 0.5, 1)

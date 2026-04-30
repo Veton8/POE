@@ -1,0 +1,240 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5gearscr001"]
+
+[ext_resource type="Script" path="res://scenes/hub/GearScreen.gd" id="1_gear"]
+
+[node name="GearScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_gear")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="PanelBorder" type="ColorRect" parent="."]
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 471.0
+offset_bottom = 261.0
+color = Color(0.086, 0.130, 0.243, 1)
+
+[node name="Panel" type="ColorRect" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 470.0
+offset_bottom = 260.0
+color = Color(0.102, 0.102, 0.180, 1)
+
+[node name="BackButton" type="Button" parent="Panel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 22.0
+text = "Back"
+
+[node name="Title" type="Label" parent="Panel"]
+offset_left = 60.0
+offset_top = 4.0
+offset_right = 200.0
+offset_bottom = 22.0
+text = "GEAR"
+vertical_alignment = 1
+
+[node name="Left" type="Control" parent="Panel"]
+offset_left = 6.0
+offset_top = 26.0
+offset_right = 134.0
+offset_bottom = 244.0
+
+[node name="PaperDoll" type="Control" parent="Panel/Left"]
+offset_top = 0.0
+offset_right = 128.0
+offset_bottom = 130.0
+
+[node name="WeaponSlot" type="ColorRect" parent="Panel/Left/PaperDoll"]
+offset_left = 96.0
+offset_top = 50.0
+offset_right = 128.0
+offset_bottom = 82.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="WLabel" type="Label" parent="Panel/Left/PaperDoll/WeaponSlot"]
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 36.0
+text = "WPN"
+horizontal_alignment = 1
+
+[node name="ArmorSlot" type="ColorRect" parent="Panel/Left/PaperDoll"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 82.0
+offset_bottom = 82.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="ALabel" type="Label" parent="Panel/Left/PaperDoll/ArmorSlot"]
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 36.0
+text = "ARM"
+horizontal_alignment = 1
+
+[node name="TrinketSlot" type="ColorRect" parent="Panel/Left/PaperDoll"]
+offset_left = 50.0
+offset_top = 6.0
+offset_right = 82.0
+offset_bottom = 38.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="TLabel" type="Label" parent="Panel/Left/PaperDoll/TrinketSlot"]
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 36.0
+text = "TRK"
+horizontal_alignment = 1
+
+[node name="PetSlot" type="ColorRect" parent="Panel/Left/PaperDoll"]
+offset_left = 50.0
+offset_top = 94.0
+offset_right = 82.0
+offset_bottom = 126.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="PLabel" type="Label" parent="Panel/Left/PaperDoll/PetSlot"]
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 36.0
+text = "PET"
+horizontal_alignment = 1
+
+[node name="Totals" type="VBoxContainer" parent="Panel/Left"]
+offset_top = 138.0
+offset_right = 128.0
+offset_bottom = 218.0
+
+[node name="TotalsHeader" type="Label" parent="Panel/Left/Totals"]
+text = "TOTAL BONUS"
+horizontal_alignment = 1
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/Left/Totals"]
+
+[node name="Name" type="Label" parent="Panel/Left/Totals/HPRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "HP"
+
+[node name="Value" type="Label" parent="Panel/Left/Totals/HPRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "+0"
+horizontal_alignment = 2
+
+[node name="DmgRow" type="HBoxContainer" parent="Panel/Left/Totals"]
+
+[node name="Name" type="Label" parent="Panel/Left/Totals/DmgRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "DMG"
+
+[node name="Value" type="Label" parent="Panel/Left/Totals/DmgRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "+0.0"
+horizontal_alignment = 2
+
+[node name="SpdRow" type="HBoxContainer" parent="Panel/Left/Totals"]
+
+[node name="Name" type="Label" parent="Panel/Left/Totals/SpdRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "SPD"
+
+[node name="Value" type="Label" parent="Panel/Left/Totals/SpdRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "+0"
+horizontal_alignment = 2
+
+[node name="CritRow" type="HBoxContainer" parent="Panel/Left/Totals"]
+
+[node name="Name" type="Label" parent="Panel/Left/Totals/CritRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "CRIT"
+
+[node name="Value" type="Label" parent="Panel/Left/Totals/CritRow"]
+custom_minimum_size = Vector2(60, 12)
+text = "+0%"
+horizontal_alignment = 2
+
+[node name="Right" type="Control" parent="Panel"]
+offset_left = 140.0
+offset_top = 26.0
+offset_right = 320.0
+offset_bottom = 244.0
+
+[node name="Filters" type="HBoxContainer" parent="Panel/Right"]
+offset_right = 180.0
+offset_bottom = 18.0
+
+[node name="FilterAll" type="Button" parent="Panel/Right/Filters"]
+custom_minimum_size = Vector2(34, 18)
+text = "All"
+
+[node name="FilterWeapon" type="Button" parent="Panel/Right/Filters"]
+custom_minimum_size = Vector2(34, 18)
+text = "Wpn"
+
+[node name="FilterArmor" type="Button" parent="Panel/Right/Filters"]
+custom_minimum_size = Vector2(34, 18)
+text = "Arm"
+
+[node name="FilterTrinket" type="Button" parent="Panel/Right/Filters"]
+custom_minimum_size = Vector2(34, 18)
+text = "Trk"
+
+[node name="FilterPet" type="Button" parent="Panel/Right/Filters"]
+custom_minimum_size = Vector2(34, 18)
+text = "Pet"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Right"]
+offset_top = 22.0
+offset_right = 180.0
+offset_bottom = 218.0
+
+[node name="Grid" type="GridContainer" parent="Panel/Right/ScrollContainer"]
+columns = 4
+
+[node name="Compare" type="Control" parent="Panel"]
+offset_left = 326.0
+offset_top = 26.0
+offset_right = 454.0
+offset_bottom = 244.0
+
+[node name="BG" type="ColorRect" parent="Panel/Compare"]
+offset_right = 128.0
+offset_bottom = 218.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="ItemName" type="Label" parent="Panel/Compare"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 124.0
+offset_bottom = 18.0
+text = "Item"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Panel/Compare"]
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 132.0
+text = ""
+
+[node name="EquipButton" type="Button" parent="Panel/Compare"]
+offset_left = 6.0
+offset_top = 152.0
+offset_right = 122.0
+offset_bottom = 174.0
+text = "EQUIP"
+
+[node name="SalvageButton" type="Button" parent="Panel/Compare"]
+offset_left = 6.0
+offset_top = 180.0
+offset_right = 122.0
+offset_bottom = 202.0
+text = "Salvage"

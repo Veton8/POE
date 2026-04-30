@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_aura"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_aura" path="res://scenes/components/AuraComponent.tscn" id="2_aura"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"combat_aura"
+display_name = "Combat Aura"
+effect_text = "Pulses 1 damage every 0.6s to nearby enemies"
+flavor_text = "Closer means hotter."
+category = 1
+rarity = 1
+stack_mode = 3
+max_stacks = 1
+weight = 1.0
+tags = Array[StringName]([&"aura", &"autocast"])
+hero_affinity = Array[StringName]([&"saitama"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_aura")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"ring"
+icon_color_primary = Color(1.0, 0.6, 0.3, 1)
+icon_color_accent = Color(0.6, 0.2, 0.1, 1)

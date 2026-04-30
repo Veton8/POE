@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=8 format=3 uid="uid://b5acestats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+[ext_resource type="Texture2D" path="res://art/characters/player_ace.svg" id="2_pt"]
+[ext_resource type="SpriteFrames" uid="uid://b5aceframes" path="res://art/characters/ace/ace_frames.tres" id="3_fr"]
+[ext_resource type="PackedScene" uid="uid://b5plybul_fire" path="res://scenes/projectiles/PlayerBulletFire.tscn" id="4_bul"]
+[ext_resource type="PackedScene" uid="uid://b5ab_logia" path="res://scenes/abilities/LogiaFlameDashAbility.tscn" id="5_q"]
+[ext_resource type="PackedScene" uid="uid://b5ab_hiken" path="res://scenes/abilities/HikenAbility.tscn" id="6_w"]
+[ext_resource type="PackedScene" uid="uid://b5ab_enjomo" path="res://scenes/abilities/EnjomoAbility.tscn" id="7_e"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Ace"
+max_hp = 6
+move_speed = 95.0
+damage = 2
+fire_rate = 5.5
+bullet_speed = 240.0
+crit_chance = 0.08
+crit_multiplier = 1.7
+detection_radius = 140.0
+portrait = ExtResource("2_pt")
+frames = ExtResource("3_fr")
+bullet_scene = ExtResource("4_bul")
+ability_q = ExtResource("5_q")
+ability_w = ExtResource("6_w")
+ability_e = ExtResource("7_e")

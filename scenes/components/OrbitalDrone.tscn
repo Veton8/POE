@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_drone"]
+
+[ext_resource type="Script" path="res://scenes/components/OrbitalComponent.gd" id="1_drone"]
+
+[node name="OrbitalDrone" type="Node2D"]
+script = ExtResource("1_drone")
+orb_count = 1
+orbit_radius = 36.0
+orbit_speed = 4.5
+orb_radius = 5.0
+orb_damage = 2
+hit_cooldown = 0.3
+color = Color(0.6, 1.0, 0.4, 1.0)

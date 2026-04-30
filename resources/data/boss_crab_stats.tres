@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://b5crabstats01"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Crystal Crab"
+max_hp = 60
+move_speed = 35.0
+contact_damage = 1
+ranged = true
+fire_rate = 0.6
+bullet_speed = 140.0
+bullet_damage = 1

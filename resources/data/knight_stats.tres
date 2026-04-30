@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://b5knightstats"]
+
+[ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
+
+[resource]
+script = ExtResource("1_ps")
+character_name = "Knight"
+max_hp = 6
+move_speed = 90.0
+damage = 1
+fire_rate = 4.0
+bullet_speed = 220.0
+crit_chance = 0.05
+crit_multiplier = 1.5
+detection_radius = 120.0

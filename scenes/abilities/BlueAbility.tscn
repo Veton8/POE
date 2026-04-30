@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_blue"]
+
+[ext_resource type="Script" path="res://scenes/abilities/BlueAbility.gd" id="1_bl"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_blue.svg" id="2_ic"]
+
+[node name="BlueAbility" type="Node"]
+script = ExtResource("1_bl")
+icon = ExtResource("2_ic")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_split"]
+
+[ext_resource type="Script" path="res://scenes/components/ProcOnKillComponent.gd" id="1_split"]
+
+[node name="SplinterBurstProc" type="Node"]
+script = ExtResource("1_split")
+proc_id = &"splinter_burst"
+trigger_every_n_kills = 1
+splinter_count = 3
+splinter_damage = 2

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_kaio"]
+
+[ext_resource type="Script" path="res://scenes/abilities/KaiokenAbility.gd" id="1_kk"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_kaioken.svg" id="2_ic"]
+
+[node name="KaiokenAbility" type="Node"]
+script = ExtResource("1_kk")
+icon = ExtResource("2_ic")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_orbit"]
+
+[ext_resource type="Script" path="res://scenes/components/OrbitalComponent.gd" id="1_orbit"]
+
+[node name="OrbitalComponent" type="Node2D"]
+script = ExtResource("1_orbit")
+orb_count = 2
+orbit_radius = 24.0
+orbit_speed = 3.0
+orb_radius = 4.0
+orb_damage = 1
+hit_cooldown = 0.4

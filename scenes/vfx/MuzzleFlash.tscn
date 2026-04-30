@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5muzzle0001"]
+
+[sub_resource type="GDScript" id="gd_mz"]
+script/source = "extends GPUParticles2D
+
+func emit_burst() -> void:
+	restart()
+	emitting = true
+	await get_tree().create_timer(lifetime + 0.05).timeout
+	if is_instance_valid(self):
+		queue_free()
+"
+
+[sub_resource type="Gradient" id="grad_mz"]
+colors = PackedColorArray(1, 1, 0.8, 1, 1, 0.7, 0.2, 0.6, 1, 0.4, 0.1, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ppm_mz"]
+direction = Vector3(1, 0, 0)
+spread = 25.0
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 1.0
+color_ramp = SubResource("grad_mz")
+
+[node name="MuzzleFlash" type="GPUParticles2D"]
+amount = 6
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ppm_mz")
+script = SubResource("gd_mz")

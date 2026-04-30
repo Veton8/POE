@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b5enmst_ta"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Tower Archer"
+max_hp = 5
+move_speed = 0.0
+contact_damage = 1
+ranged = true
+fire_rate = 0.55
+bullet_speed = 280.0
+bullet_damage = 2
+detection_radius = 320.0
+xp_reward = 3

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_phase"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"phase_step"
+display_name = "Phase Step"
+effect_text = "Dash distance +24, i-frames +0.25s"
+flavor_text = "Slip the seam between heartbeats."
+category = 3
+rarity = 1
+stack_mode = 2
+max_stacks = 2
+weight = 0.95
+tags = Array[StringName]([&"movement", &"dash", &"defense"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_apply_phase_step"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"diamond"
+icon_color_primary = Color(0.7, 0.6, 1.0, 1)
+icon_color_accent = Color(0.2, 0.1, 0.5, 1)

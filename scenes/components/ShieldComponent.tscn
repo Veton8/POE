@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_shield"]
+
+[ext_resource type="Script" path="res://scenes/components/ShieldComponent.gd" id="1_shield"]
+
+[node name="ShieldComponent" type="Node2D"]
+script = ExtResource("1_shield")
+max_hp = 1
+regen_delay = 4.0
+regen_interval = 2.5

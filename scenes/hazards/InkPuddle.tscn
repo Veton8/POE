@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b5inkpud01"]
+
+[ext_resource type="Script" path="res://scenes/hazards/InkPuddle.gd" id="1_ip"]
+[ext_resource type="Texture2D" path="res://art/hazards/ink_puddle.svg" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="cs_ip"]
+radius = 8.0
+
+[node name="InkPuddle" type="Area2D"]
+script = ExtResource("1_ip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("cs_ip")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="TickTimer" type="Timer" parent="."]
+wait_time = 0.7

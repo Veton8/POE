@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=6 format=3 uid="uid://b5wave_b_r9d"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5entry_cc1" path="res://resources/data/enemies/entry_choir_conductor_1.tres" id="2_cc"]
+[ext_resource type="Resource" uid="uid://b5entry_sl1" path="res://resources/data/enemies/entry_soul_lantern_1.tres" id="3_sl"]
+[ext_resource type="Resource" uid="uid://b5entry_pp2" path="res://resources/data/enemies/entry_pew_phantom_2.tres" id="4_pp"]
+[ext_resource type="Resource" uid="uid://b5entry_btot2" path="res://resources/data/enemies/entry_bone_totem_2.tres" id="5_bt"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_cc"), ExtResource("3_sl"), ExtResource("4_pp"), ExtResource("5_bt")])
+spawn_delay = 0.3
+auto_advance_seconds = 24.0

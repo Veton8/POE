@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5hud0001"]
+
+[ext_resource type="Script" path="res://scenes/ui/HUD.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://b5vjoy0001" path="res://scenes/ui/VirtualJoystick.tscn" id="2_joy"]
+[ext_resource type="PackedScene" uid="uid://b5abtn0001" path="res://scenes/ui/AbilityButton.tscn" id="3_ab"]
+[ext_resource type="Texture2D" path="res://art/ui/pause_icon.svg" id="4_pause"]
+[ext_resource type="Texture2D" path="res://art/ui/coin_icon.svg" id="5_coin"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 24.0
+
+[node name="HeartsRow" type="HBoxContainer" parent="Margin"]
+
+[node name="RoomLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = -8.0
+horizontal_alignment = 1
+text = "Room"
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 226.0
+offset_top = 4.0
+offset_right = 254.0
+offset_bottom = 22.0
+icon = ExtResource("4_pause")
+flat = true
+
+[node name="CoinCounter" type="HBoxContainer" parent="."]
+offset_left = 400.0
+offset_top = 28.0
+offset_right = 472.0
+offset_bottom = 42.0
+
+[node name="Icon" type="TextureRect" parent="CoinCounter"]
+custom_minimum_size = Vector2(10, 10)
+texture = ExtResource("5_coin")
+
+[node name="Label" type="Label" parent="CoinCounter"]
+custom_minimum_size = Vector2(50, 12)
+text = "+0"
+
+[node name="VirtualJoystick" parent="." instance=ExtResource("2_joy")]
+
+[node name="AbilityQ" parent="." instance=ExtResource("3_ab")]
+position = Vector2(348, 196)
+input_action = "ability_q"
+
+[node name="AbilityW" parent="." instance=ExtResource("3_ab")]
+position = Vector2(404, 156)
+input_action = "ability_w"
+
+[node name="AbilityE" parent="." instance=ExtResource("3_ab")]
+position = Vector2(404, 196)
+input_action = "ability_e"
+
+[node name="PauseOverlay" type="Control" parent="."]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="BG" type="ColorRect" parent="PauseOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="ColorRect" parent="PauseOverlay"]
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 340.0
+offset_bottom = 200.0
+color = Color(0.102, 0.102, 0.180, 1)
+
+[node name="Title" type="Label" parent="PauseOverlay/Panel"]
+offset_left = 0.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 28.0
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/Panel"]
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 150.0
+offset_bottom = 64.0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="PauseOverlay/Panel"]
+offset_left = 50.0
+offset_top = 76.0
+offset_right = 150.0
+offset_bottom = 100.0
+text = "Quit Run"

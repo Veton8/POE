@@ -1,0 +1,66 @@
+workflows:
+  ios-debug:
+    name: iOS Debug (free Apple ID + AltStore)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      vars:
+        GODOT_VERSION: "4.6.2"
+        BUNDLE_ID: "com.pathofevil.game"
+      ios_signing:
+        distribution_type: development
+        bundle_identifier: $BUNDLE_ID
+    scripts:
+      - name: Install Godot for macOS
+        script: |
+          set -e
+          curl -fL -o godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip"
+          unzip -q godot.zip
+          GODOT_BIN="$(pwd)/Godot.app/Contents/MacOS/Godot"
+          chmod +x "$GODOT_BIN"
+          echo "GODOT_BIN=$GODOT_BIN" >> $CM_ENV
+
+      - name: Install iOS export templates
+        script: |
+          set -e
+          curl -fL -o templates.tpz \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          TEMPLATE_DIR="$HOME/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$TEMPLATE_DIR"
+          unzip -q -j templates.tpz "templates/*" -d "$TEMPLATE_DIR"
+
+      - name: Import project assets
+        script: |
+          set -e
+          "$GODOT_BIN" --headless --import . || true
+
+      - name: Export iOS Xcode project
+        script: |
+          set -e
+          mkdir -p ios
+          "$GODOT_BIN" --headless --export-debug "iOS" "ios/path_of_evil.xcodeproj"
+
+      - name: Build signed IPA
+        script: |
+          set -e
+          cd ios
+          xcodebuild -project path_of_evil.xcodeproj \
+            -scheme path_of_evil \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/path_of_evil.xcarchive \
+            archive
+          xcodebuild -exportArchive \
+            -archivePath build/path_of_evil.xcarchive \
+            -exportPath build \
+            -exportOptionsPlist ../export_options.plist
+    artifacts:
+      - ios/build/*.ipa
+    publishing:
+      email:
+        recipients:
+          - veton222222@gmail.com
+        notify:
+          success: true
+          failure: true

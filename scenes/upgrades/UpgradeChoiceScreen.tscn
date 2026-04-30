@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5upchoice01"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeChoiceScreen.gd" id="1_ucs"]
+
+[node name="UpgradeChoiceScreen" type="CanvasLayer"]
+script = ExtResource("1_ucs")

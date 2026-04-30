@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://b5slimestats"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Slime"
+max_hp = 3
+move_speed = 50.0
+contact_damage = 1
+ranged = false

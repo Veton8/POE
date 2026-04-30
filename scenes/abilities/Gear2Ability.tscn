@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_gear2"]
+
+[ext_resource type="Script" path="res://scenes/abilities/Gear2Ability.gd" id="1_g2"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_gear2.svg" id="2_ic"]
+
+[node name="Gear2Ability" type="Node"]
+script = ExtResource("1_g2")
+icon = ExtResource("2_ic")

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_drone"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_drone" path="res://scenes/components/OrbitalDrone.tscn" id="2_drone"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"drone_mk1"
+display_name = "Drone Mk1"
+effect_text = "A green orbital drone follows you, hitting twice as hard"
+flavor_text = "Whirrs. Bites. Repeats."
+category = 1
+rarity = 2
+stack_mode = 3
+max_stacks = 1
+weight = 0.9
+tags = Array[StringName]([&"orbital", &"autocast", &"drone"])
+hero_affinity = Array[StringName]([&"light_yagami"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_drone")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"orb"
+icon_color_primary = Color(0.6, 1.0, 0.5, 1)
+icon_color_accent = Color(0.1, 0.4, 0.2, 1)

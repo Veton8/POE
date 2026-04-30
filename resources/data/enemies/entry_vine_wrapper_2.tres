@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyEntry" load_steps=3 format=3 uid="uid://b5entry_vw2"]
+
+[ext_resource type="Script" path="res://resources/EnemyEntry.gd" id="1_ee"]
+[ext_resource type="PackedScene" uid="uid://b5enm_vw01" path="res://scenes/enemies/VineWrapper.tscn" id="2_sc"]
+
+[resource]
+script = ExtResource("1_ee")
+enemy_scene = ExtResource("2_sc")
+count = 2

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3 uid="uid://b5wave_s_r9b"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5entry_dr1" path="res://resources/data/enemies/entry_drowner_1.tres" id="2_dr"]
+[ext_resource type="Resource" uid="uid://b5entry_ta2" path="res://resources/data/enemies/entry_tower_archer_2.tres" id="3_ta"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_dr"), ExtResource("3_ta")])
+spawn_delay = 0.3
+auto_advance_seconds = 18.0

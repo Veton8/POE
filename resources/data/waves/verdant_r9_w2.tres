@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3 uid="uid://b5wave_v_r9b"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5entry_rb3" path="res://resources/data/enemies/entry_root_bomber_3.tres" id="2_rb"]
+[ext_resource type="Resource" uid="uid://b5entry_vw2" path="res://resources/data/enemies/entry_vine_wrapper_2.tres" id="3_vw"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_rb"), ExtResource("3_vw")])
+spawn_delay = 0.1
+auto_advance_seconds = 7.0

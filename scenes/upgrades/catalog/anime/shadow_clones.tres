@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_clones"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_clone" path="res://scenes/components/OrbitalShadowClone.tscn" id="2_clone"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"shadow_clones"
+display_name = "Shadow Clones"
+effect_text = "3 orange clones orbit you, slamming enemies on contact"
+flavor_text = "Tajuu Kage Bunshin no Jutsu."
+category = 5
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.8
+tags = Array[StringName]([&"orbital", &"anime", &"autocast"])
+hero_affinity = Array[StringName]([&"naruto_uzumaki"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_clone")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"star"
+icon_color_primary = Color(1.0, 0.7, 0.2, 1)
+icon_color_accent = Color(0.6, 0.3, 0.05, 1)

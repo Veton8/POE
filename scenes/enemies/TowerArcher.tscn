@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5enm_ta01"]
+
+[ext_resource type="PackedScene" uid="uid://b5enmbase01" path="res://scenes/enemies/EnemyBase.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://b5enmbul001" path="res://scenes/projectiles/EnemyBullet.tscn" id="2_bul"]
+[ext_resource type="Resource" uid="uid://b5enmst_ta" path="res://resources/data/enemies/tower_archer_stats.tres" id="3_st"]
+[ext_resource type="Texture2D" path="res://art/enemies/tower_archer.svg" id="4_tex"]
+
+[node name="TowerArcher" instance=ExtResource("1_base")]
+stats = ExtResource("3_st")
+bullet_scene = ExtResource("2_bul")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("4_tex")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b5inkblob01"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/InkBlob.gd" id="1_ib"]
+[ext_resource type="Texture2D" path="res://art/projectiles/ink_blob.svg" id="2_tex"]
+
+[node name="InkBlob" type="Node2D"]
+z_index = 4
+script = ExtResource("1_ib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")

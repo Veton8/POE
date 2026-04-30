@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://b5archerstats"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Archer"
+max_hp = 2
+move_speed = 35.0
+contact_damage = 1
+ranged = true
+fire_rate = 1.0
+bullet_speed = 130.0
+bullet_damage = 1
+detection_radius = 220.0

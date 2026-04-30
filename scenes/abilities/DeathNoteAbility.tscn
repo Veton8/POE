@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_deathnote"]
+
+[ext_resource type="Script" path="res://scenes/abilities/DeathNoteAbility.gd" id="1_dn"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_unlimited_void.svg" id="2_ic"]
+
+[node name="DeathNoteAbility" type="Node"]
+script = ExtResource("1_dn")
+icon = ExtResource("2_ic")

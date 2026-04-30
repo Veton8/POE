@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5bossbar001"]
+
+[ext_resource type="Script" path="res://scenes/ui/BossHealthBar.gd" id="1_bb"]
+
+[node name="BossHealthBar" type="CanvasLayer"]
+script = ExtResource("1_bb")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 400.0
+offset_bottom = 28.0
+max_value = 100.0
+value = 100.0
+tint_progress = Color(1, 0.2, 0.2, 1)
+tint_under = Color(0.1, 0, 0, 1)
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 4.0
+offset_right = 400.0
+offset_bottom = 16.0
+horizontal_alignment = 1
+text = "BOSS"
+
+[node name="PhaseLabel" type="Label" parent="."]
+visible = false
+offset_left = 80.0
+offset_top = 30.0
+offset_right = 400.0
+offset_bottom = 42.0
+horizontal_alignment = 1
+text = "PHASE 2"

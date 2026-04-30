@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://b5wave_b_r1"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5entry_btot1" path="res://resources/data/enemies/entry_bone_totem_1.tres" id="2_bt"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_bt")])
+spawn_delay = 0.5
+auto_advance_seconds = 35.0

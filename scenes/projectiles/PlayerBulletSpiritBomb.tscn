@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5plybul_sbomb"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/Bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" path="res://art/projectiles/bullet_spirit_bomb.svg" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bul"]
+radius = 9.0
+
+[node name="SpiritBomb" type="Area2D"]
+z_index = 6
+collision_layer = 32
+collision_mask = 17
+script = ExtResource("1_bullet")
+lifetime = 4.0
+burn_dps = 0.0
+burn_duration = 0.0
+pull_distance = 0.0
+pierce_count = 0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bul")

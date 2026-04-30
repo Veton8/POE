@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b5enmst_pt"]
+
+[ext_resource type="Script" path="res://resources/EnemyStats.gd" id="1_es"]
+
+[resource]
+script = ExtResource("1_es")
+enemy_name = "Page-Turner"
+max_hp = 7
+move_speed = 18.0
+contact_damage = 1
+ranged = true
+fire_rate = 0.7
+bullet_speed = 130.0
+bullet_damage = 1
+detection_radius = 240.0
+xp_reward = 4

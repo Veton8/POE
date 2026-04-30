@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=6 format=3 uid="uid://b5wave_v_r9d"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5slimeentry" path="res://resources/data/slime_entry.tres" id="2_sl"]
+[ext_resource type="Resource" uid="uid://b5dashentry01" path="res://resources/data/dasher_entry.tres" id="3_ds"]
+[ext_resource type="Resource" uid="uid://b5entry_vw1" path="res://resources/data/enemies/entry_vine_wrapper_1.tres" id="4_vw"]
+[ext_resource type="Resource" uid="uid://b5entry_rb2" path="res://resources/data/enemies/entry_root_bomber_2.tres" id="5_rb"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_sl"), ExtResource("3_ds"), ExtResource("4_vw"), ExtResource("5_rb")])
+spawn_delay = 0.1
+auto_advance_seconds = 12.0

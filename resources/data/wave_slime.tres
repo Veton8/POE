@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://b5waveslime01"]
+
+[ext_resource type="Script" path="res://resources/WaveData.gd" id="1_wd"]
+[ext_resource type="Resource" uid="uid://b5slimeentry" path="res://resources/data/slime_entry.tres" id="2_se"]
+
+[resource]
+script = ExtResource("1_wd")
+entries = Array[EnemyEntry]([ExtResource("2_se")])
+spawn_delay = 0.1
+auto_advance_seconds = 15.0

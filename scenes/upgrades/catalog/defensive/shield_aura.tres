@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_shield"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_shield" path="res://scenes/components/ShieldComponent.tscn" id="2_shi"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"shield_aura"
+display_name = "Shield Aura"
+effect_text = "Soaks 1 hit. Recharges after 4s of no damage."
+flavor_text = "A held breath."
+category = 2
+rarity = 1
+stack_mode = 2
+max_stacks = 2
+weight = 0.95
+tags = Array[StringName]([&"defense", &"shield"])
+hero_affinity = Array[StringName]([&"gojo"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_shi")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"ring"
+icon_color_primary = Color(0.5, 0.85, 1.0, 1)
+icon_color_accent = Color(0.1, 0.4, 0.6, 1)

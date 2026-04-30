@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5boss_ts01"]
+
+[ext_resource type="Script" path="res://scenes/enemies/bosses/sunken/TideSniper.gd" id="1_boss"]
+[ext_resource type="Script" path="res://scenes/components/HealthComponent.gd" id="2_hp"]
+[ext_resource type="Script" path="res://scenes/components/HurtboxComponent.gd" id="3_hurt"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_flash"]
+[ext_resource type="PackedScene" uid="uid://b5enmbul001" path="res://scenes/projectiles/EnemyBullet.tscn" id="5_bul"]
+[ext_resource type="Resource" uid="uid://b5bossst_ts" path="res://resources/data/enemies/boss_tide_sniper_stats.tres" id="6_st"]
+[ext_resource type="Texture2D" path="res://art/bosses/boss_tide_sniper.svg" id="7_tex"]
+[ext_resource type="Texture2D" path="res://art/vfx/shadow.svg" id="8_shd"]
+
+[sub_resource type="CircleShape2D" id="cs_body"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="cs_slam"]
+radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="mat_flash"]
+resource_local_to_scene = true
+shader = ExtResource("4_flash")
+shader_parameter/active = false
+shader_parameter/flash_color = Vector3(1, 1, 1)
+
+[node name="TideSniper" type="CharacterBody2D" groups=["enemies", "boss"]]
+z_index = 5
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_boss")
+stats = ExtResource("6_st")
+bullet_scene = ExtResource("5_bul")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("mat_flash")
+texture = ExtResource("7_tex")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(1.4, 1.0)
+z_index = -1
+texture = ExtResource("8_shd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("cs_body")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "sprite_to_flash")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_hurt")
+health = NodePath("../HealthComponent")
+sprite_to_flash = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("cs_body")
+
+[node name="ContactHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
+shape = SubResource("cs_body")
+
+[node name="SlamArea" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlamArea"]
+shape = SubResource("cs_slam")
+
+[node name="Telegraph" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 0.2, 0.2, 0.7)
+offset_left = 0.0
+offset_top = -2.0
+offset_right = 80.0
+offset_bottom = 2.0
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_hp")
+max_hp = 110
+
+[node name="PatternTimer" type="Timer" parent="."]
+wait_time = 2.2

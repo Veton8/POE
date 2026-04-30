@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_shock"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="PackedScene" uid="uid://b5cmp_shock" path="res://scenes/components/ShockwaveStepProc.tscn" id="2_pkg"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"shockwave_step"
+display_name = "Shockwave Step"
+effect_text = "Dashing emits a 48px shockwave for 4 damage"
+flavor_text = "The air remembers."
+category = 3
+rarity = 2
+stack_mode = 3
+max_stacks = 1
+weight = 0.85
+tags = Array[StringName]([&"movement", &"dash", &"on_dodge"])
+hero_affinity = Array[StringName]([&"levi_ackerman"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = ExtResource("2_pkg")
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"star"
+icon_color_primary = Color(1.0, 0.9, 0.5, 1)
+icon_color_accent = Color(0.5, 0.3, 0.05, 1)

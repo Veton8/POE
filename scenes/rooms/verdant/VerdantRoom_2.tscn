@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5vroom_2"]
+
+[ext_resource type="PackedScene" uid="uid://b5vroombase" path="res://scenes/rooms/verdant/VerdantRoomBase.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://b5rd_v_2" path="res://resources/data/rooms/verdant/room_v_2.tres" id="2_data"]
+
+[node name="VerdantRoom_2" instance=ExtResource("1_base")]
+room_data = ExtResource("2_data")

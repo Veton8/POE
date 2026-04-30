@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://b5gear_t_luck"]
+
+[ext_resource type="Script" path="res://resources/GearItem.gd" id="1_gi"]
+[ext_resource type="Texture2D" path="res://art/ui/gear/trinket_lucky_charm.svg" id="2_ic"]
+
+[resource]
+script = ExtResource("1_gi")
+item_id = "trinket_lucky_charm"
+item_name = "Lucky Charm"
+type = "trinket"
+rarity = 0
+hp_bonus = 0
+damage_bonus = 0.0
+speed_bonus = 0.0
+crit_bonus = 0.05
+icon = ExtResource("2_ic")
+description = "Slightly more crit. Slightly."

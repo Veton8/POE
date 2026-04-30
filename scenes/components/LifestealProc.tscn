@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cmp_life"]
+
+[ext_resource type="Script" path="res://scenes/components/ProcOnHitComponent.gd" id="1_life"]
+
+[node name="LifestealProc" type="Node"]
+script = ExtResource("1_life")
+proc_id = &"lifesteal"
+trigger_every_n_hits = 6
+heal_amount = 1

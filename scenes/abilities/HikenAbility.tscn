@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ab_hiken"]
+
+[ext_resource type="Script" path="res://scenes/abilities/HikenAbility.gd" id="1_hiken"]
+[ext_resource type="Texture2D" path="res://art/ui/ability_hiken.svg" id="2_ic"]
+
+[node name="HikenAbility" type="Node"]
+script = ExtResource("1_hiken")
+icon = ExtResource("2_ic")

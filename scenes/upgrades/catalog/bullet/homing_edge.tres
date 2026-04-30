@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_homing"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeStatModifier.gd" id="2_um"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2_um")
+stat_path = NodePath("bullet_homing_strength")
+op = 0
+value = 2.0
+hyperbolic_coefficient = 0.15
+
+[resource]
+script = ExtResource("1_ud")
+id = &"homing_edge"
+display_name = "Homing Edge"
+effect_text = "Bullets gently track the nearest enemy"
+flavor_text = "It always finds you."
+category = 0
+rarity = 1
+stack_mode = 2
+max_stacks = 3
+weight = 1.0
+tags = Array[StringName]([&"projectile", &"tracking"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([SubResource("mod_1")])
+component_to_attach = null
+apply_callback = &""
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"eye"
+icon_color_primary = Color(0.7, 1.0, 0.9, 1)
+icon_color_accent = Color(0.1, 0.3, 0.4, 1)

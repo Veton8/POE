@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_iron"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeStatModifier.gd" id="2_um"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2_um")
+stat_path = NodePath("stats:max_hp")
+op = 0
+value = 1.0
+hyperbolic_coefficient = 0.15
+
+[resource]
+script = ExtResource("1_ud")
+id = &"iron_skin"
+display_name = "Iron Skin"
+effect_text = "+1 max HP"
+flavor_text = "Less squish."
+category = 2
+rarity = 0
+stack_mode = 0
+max_stacks = 99
+weight = 1.0
+tags = Array[StringName]([&"defense", &"hp"])
+hero_affinity = Array[StringName]([])
+stat_modifiers = Array[Resource]([SubResource("mod_1")])
+component_to_attach = null
+apply_callback = &"_apply_iron_skin"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"square"
+icon_color_primary = Color(0.7, 0.7, 0.8, 1)
+icon_color_accent = Color(0.3, 0.3, 0.4, 1)
