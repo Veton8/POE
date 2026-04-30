@@ -32,13 +32,27 @@ workflows:
           set -e
           "$GODOT_BIN" --headless --import . || true
 
+      - name: Diagnose export environment
+        script: |
+          echo "=== Godot version ==="
+          "$GODOT_BIN" --version
+          echo "=== Templates directory ==="
+          TEMPLATE_DIR="$HOME/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable"
+          ls -la "$TEMPLATE_DIR" || echo "(template dir missing)"
+          echo "=== Presets in export_presets.cfg ==="
+          grep -E "^\[preset|^name=|^platform=" export_presets.cfg
+          echo "=== iOS preset options ==="
+          awk '/\[preset\.2\.options\]/,/^\[/' export_presets.cfg | head -60
+
       - name: Export Xcode project from Godot
         script: |
           set -e
           mkdir -p ios
-          # --verbose surfaces the actual validation reasons; without it
-          # Godot just says "configuration errors:" with no specifics.
-          "$GODOT_BIN" --headless --verbose --export-debug "iOS" "ios/path_of_evil.xcodeproj" 2>&1
+          # --verbose surfaces validation reasons; print_error_to_stdout
+          # routes Godot's ERR_PRINT to stdout instead of stderr so logs
+          # don't reorder.
+          "$GODOT_BIN" --headless --verbose \
+            --export-debug "iOS" "ios/path_of_evil.xcodeproj"
           ls -la ios/
 
       - name: Build with ad-hoc signing
