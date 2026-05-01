@@ -30,11 +30,18 @@ var _player: Player
 var _camera: ShakeCamera2D
 var _spawner: EndlessSpawner
 var _hud: CanvasLayer
+var _reaper_wave: ReaperWave
+var _telegraph: OffscreenTelegraph
 
 # Run-state for XP / level
 var _xp_current: int = 0
 var _level: int = 1
 var _xp_bonus_mult: float = 1.0  # bumped by Curse Pillar destruction
+
+const REAPER_ACTIVATE_TIME: float = 1080.0  # 18:00
+const HARD_CAP_TIME: float = 1500.0  # 25:00 — forced player death
+var _reaper_active: bool = false
+var _hard_capped: bool = false
 
 
 func _ready() -> void:
@@ -245,6 +252,16 @@ func _build_hud() -> void:
 	add_child(_hud)
 	if _hud.has_method("bind"):
 		_hud.call("bind", _player, _spawner, self)
+	# Off-screen edge arrows for bosses/reapers
+	_telegraph = OffscreenTelegraph.new()
+	_telegraph.name = "OffscreenTelegraph"
+	add_child(_telegraph)
+	_telegraph.attach_to(_player)
+	# Reaper wave manager (ticks while active)
+	_reaper_wave = ReaperWave.new()
+	_reaper_wave.name = "ReaperWave"
+	add_child(_reaper_wave)
+	_reaper_wave.attach(_spawner, _player)
 
 
 func _connect_signals() -> void:
@@ -331,3 +348,28 @@ func _on_player_died() -> void:
 	GameState.run_stats["time_survived_ms"] = Time.get_ticks_msec() - int(GameState.run_stats.get("start_time_ms", Time.get_ticks_msec()))
 	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file(RUN_SUMMARY_SCENE_PATH)
+
+
+func _process(_delta: float) -> void:
+	# Reaper escalation at 18:00 (one-time activation)
+	if not _reaper_active and _spawner != null and _spawner.get_run_time() >= REAPER_ACTIVATE_TIME:
+		_reaper_active = true
+		if _reaper_wave != null:
+			_reaper_wave.activate()
+	# Hard cap at 25:00 — overwhelming swarm + forced death
+	if not _hard_capped and _spawner != null and _spawner.get_run_time() >= HARD_CAP_TIME:
+		_hard_capped = true
+		_force_hard_cap()
+
+
+func _force_hard_cap() -> void:
+	# Spawn 5 reapers around the player + a swarm; if survived briefly,
+	# the player's HP will be ground out by attrition.
+	if _reaper_wave != null:
+		for i: int in 5:
+			_reaper_wave._spawn_reaper()
+	# Then "credit roll" overlay: zero out player HP after 8 seconds
+	# in case they're a god build that somehow survives the swarm.
+	await get_tree().create_timer(8.0).timeout
+	if _player != null and is_instance_valid(_player) and _player.health != null:
+		_player.health.take_damage(99999, self)

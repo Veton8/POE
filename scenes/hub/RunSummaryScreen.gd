@@ -96,7 +96,15 @@ func _populate() -> void:
 	var hits: int = int(GameState.run_stats.get("hits_taken", 0))
 	var elapsed_ms: int = Time.get_ticks_msec() - int(GameState.run_stats.get("start_time_ms", Time.get_ticks_msec()))
 	var seconds: int = elapsed_ms / 1000
-	_stats_label.text = "Rooms %d  ·  Enemies %d  ·  Bosses %d  ·  Hits %d  ·  Time %ds" % [rooms, enemies, bosses, hits, seconds]
+	var mode: String = str(GameState.run_stats.get("mode", "dungeon"))
+	if mode == "endless":
+		var time_survived_ms: int = int(GameState.run_stats.get("time_survived_ms", elapsed_ms))
+		var ts_secs: int = time_survived_ms / 1000
+		var ts_min: int = ts_secs / 60
+		var ts_rem: int = ts_secs % 60
+		_stats_label.text = "ENDLESS  ·  Time Survived %02d:%02d  ·  Kills %d  ·  Bosses %d  ·  Hits %d" % [ts_min, ts_rem, enemies, bosses, hits]
+	else:
+		_stats_label.text = "Rooms %d  ·  Enemies %d  ·  Bosses %d  ·  Hits %d  ·  Time %ds" % [rooms, enemies, bosses, hits, seconds]
 
 	if not has_node("/root/UpgradeManager"):
 		return
