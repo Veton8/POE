@@ -31,6 +31,8 @@ DungeonManager="*res://autoloads/DungeonManager.gd"
 GameState="*res://autoloads/GameState.gd"
 UpgradeRegistry="*res://scenes/upgrades/UpgradeRegistry.gd"
 UpgradeManager="*res://scenes/upgrades/UpgradeManager.gd"
+MarkRegistry="*res://autoloads/MarkRegistry.gd"
+AutocastModifierRegistry="*res://autoloads/AutocastModifierRegistry.gd"
 
 [display]
 
