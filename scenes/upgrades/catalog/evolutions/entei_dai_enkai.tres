@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5ev_entei"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"entei_dai_enkai"
+display_name = "Dai Enkai: Entei"
+effect_text = "[EVOLUTION] Summons the Flame Emperor. Massive bonuses + permanent burning aura on contact."
+flavor_text = "Soldiers of fire, lend me your strength."
+category = 1
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 1.0
+tags = Array[StringName]([&"ace", &"fire", &"logia", &"autocast", &"finisher", &"evolution"])
+hero_affinity = Array[StringName]([&"ace"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_evolution"
+requires_tags = Array[StringName]([&"ace"])
+requires_ids = Array[StringName]([&"hiken_jab", &"enjomo_curtain", &"logia_phase"])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([&"hiken_jab", &"enjomo_curtain", &"logia_phase"])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"flame"
+icon_color_primary = Color(0.95, 0.30, 0.10, 1)
+icon_color_accent = Color(1.0, 0.85, 0.30, 1)

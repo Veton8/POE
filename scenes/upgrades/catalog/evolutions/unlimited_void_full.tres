@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5ev_voidfull"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"unlimited_void_full"
+display_name = "Domain Expansion: Unlimited Void"
+effect_text = "[EVOLUTION] Awakens Gojo's full domain. Massive permanent bonus to damage, HP, fire rate."
+flavor_text = "Throughout heaven and earth, I alone am the honored one."
+category = 1
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 1.0
+tags = Array[StringName]([&"gojo", &"cursed_energy", &"autocast", &"domain", &"finisher", &"evolution"])
+hero_affinity = Array[StringName]([&"gojo"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_evolution"
+requires_tags = Array[StringName]([&"gojo"])
+requires_ids = Array[StringName]([&"blue_orbital", &"hollow_purple_lance", &"six_eyes_clarity"])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([&"blue_orbital", &"hollow_purple_lance", &"six_eyes_clarity"])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"eye"
+icon_color_primary = Color(0.10, 0.10, 0.30, 1)
+icon_color_accent = Color(1.0, 1.0, 1.0, 1)

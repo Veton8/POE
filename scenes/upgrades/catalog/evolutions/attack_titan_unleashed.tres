@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5ev_titan"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"attack_titan_unleashed"
+display_name = "Attack Titan: Unleashed"
+effect_text = "[EVOLUTION] Below 40% HP, +100% damage and immune to knockback. All Eren effects supercharged."
+flavor_text = "Tatakae."
+category = 1
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 1.0
+tags = Array[StringName]([&"eren", &"titan", &"autocast", &"finisher", &"evolution"])
+hero_affinity = Array[StringName]([&"eren"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_evolution"
+requires_tags = Array[StringName]([&"eren"])
+requires_ids = Array[StringName]([&"hollow_mask", &"hardening_spikes", &"founding_roar"])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([&"hollow_mask", &"hardening_spikes", &"founding_roar"])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"square"
+icon_color_primary = Color(0.55, 0.50, 0.45, 1)
+icon_color_accent = Color(0.95, 0.30, 0.30, 1)

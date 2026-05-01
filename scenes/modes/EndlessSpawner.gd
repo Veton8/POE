@@ -89,6 +89,21 @@ func _spawn_at(ps: PackedScene, pos: Vector2) -> Node:
 	var e: Node = ps.instantiate()
 	if e == null:
 		return null
+	# Apply difficulty scaling — duplicate stats Resource before mutating
+	# so we don't poison shared baselines across all spawned instances.
+	if e is EnemyBase:
+		var eb: EnemyBase = e as EnemyBase
+		if eb.stats != null:
+			var scaled: EnemyStats = eb.stats.duplicate() as EnemyStats
+			var t_min: float = _t_run_seconds / 60.0
+			var hp_mul: float = _hp_multiplier(t_min)
+			var dmg_mul: float = _damage_multiplier(t_min)
+			var speed_mul: float = _speed_multiplier(t_min)
+			scaled.max_hp = max(1, int(round(float(scaled.max_hp) * hp_mul)))
+			scaled.move_speed *= speed_mul
+			scaled.contact_damage = max(1, int(round(float(scaled.contact_damage) * dmg_mul)))
+			scaled.bullet_damage = max(1, int(round(float(scaled.bullet_damage) * dmg_mul)))
+			eb.stats = scaled
 	if e is Node2D:
 		(e as Node2D).global_position = pos
 	_world.add_child(e)
@@ -96,6 +111,30 @@ func _spawn_at(ps: PackedScene, pos: Vector2) -> Node:
 	if e.has_signal("tree_exiting"):
 		e.tree_exiting.connect(_on_enemy_freed.bind(e), CONNECT_ONE_SHOT)
 	return e
+
+
+# Difficulty curves from the design doc — piecewise multipliers
+# applied to scaled.max_hp / .contact_damage / .move_speed.
+func _hp_multiplier(t_min: float) -> float:
+	if t_min < 2.0: return 1.0
+	if t_min < 5.0: return 1.5
+	if t_min < 10.0: return 3.0
+	if t_min < 15.0: return 6.0
+	if t_min < 20.0: return 12.0
+	return 24.0
+
+
+func _damage_multiplier(t_min: float) -> float:
+	if t_min < 2.0: return 1.0
+	if t_min < 5.0: return 1.2
+	if t_min < 10.0: return 1.8
+	if t_min < 15.0: return 2.6
+	if t_min < 20.0: return 3.6
+	return 5.0
+
+
+func _speed_multiplier(t_min: float) -> float:
+	return minf(1.6, 1.0 + t_min * 0.03)
 
 
 func _pick_spawn_position() -> Vector2:

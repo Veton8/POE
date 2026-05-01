@@ -625,3 +625,29 @@ func _attach_thirteen_day_curse(_u: UpgradeData) -> void:
 	var t: ThirteenDayTicker = ThirteenDayTicker.new()
 	t.name = "ThirteenDayTicker"
 	p.add_child(t)
+
+
+# ---------- Evolution callbacks ----------
+
+func _attach_evolution(_u: UpgradeData) -> void:
+	# Generic Legendary evolution. Grants permanent passive boost via
+	# EvolutionWatcher (+30% damage, +25% max_hp, +10% fire_rate).
+	# Per-evolution signature watchers (one_punch etc.) layer on top.
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var watcher: EvolutionWatcher = EvolutionWatcher.new()
+	watcher.name = "EvolutionWatcher_" + String(_u.id)
+	p.add_child(watcher)
+	watcher.attach_to(p)
+
+
+func _attach_evolution_one_punch(_u: UpgradeData) -> void:
+	_attach_evolution(_u)
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("OnePunchWatcher"):
+		return
+	var w: OnePunchWatcher = OnePunchWatcher.new()
+	w.name = "OnePunchWatcher"
+	p.add_child(w)
+	w.attach_to(p)
