@@ -201,6 +201,24 @@ func _wrap_abilities_for_autocast() -> void:
 func _build_spawner() -> void:
 	_spawner = EndlessSpawner.new()
 	_spawner.name = "EndlessSpawner"
+	# v1 enemy roster — pulled from existing verdant pool plus a few
+	# cross-biome flavors so the endless feel isn't tied to one dungeon.
+	# Real endless biome enemies will replace these later.
+	_spawner.enemy_pool = [
+		preload("res://scenes/enemies/Slime.tscn"),
+		preload("res://scenes/enemies/Dasher.tscn"),
+		preload("res://scenes/enemies/Archer.tscn"),
+		preload("res://scenes/enemies/SporePuffer.tscn"),
+	]
+	_spawner.elite_pool = [
+		preload("res://scenes/enemies/MossbackTank.tscn"),
+		preload("res://scenes/enemies/RootBomber.tscn"),
+	]
+	_spawner.boss_pool = [
+		preload("res://scenes/enemies/bosses/verdant/ThornBrute.tscn"),
+		preload("res://scenes/enemies/bosses/verdant/WraithWarden.tscn"),
+		preload("res://scenes/enemies/bosses/verdant/PoisonBloom.tscn"),
+	]
 	_world.add_child(_spawner)
 	_spawner.attach(_player, _world)
 
