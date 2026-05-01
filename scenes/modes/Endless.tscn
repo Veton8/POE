@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5endless0001"]
+
+[ext_resource type="Script" path="res://scenes/modes/Endless.gd" id="1_endless"]
+
+[node name="Endless" type="Node2D"]
+script = ExtResource("1_endless")

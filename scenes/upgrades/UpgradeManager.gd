@@ -95,18 +95,23 @@ func _get_player() -> Node:
 func _on_room_cleared_event(room: Node) -> void:
 	if not _should_offer(room):
 		return
+	offer_picks()
+
+
+# Public — called by either room-clear (dungeon mode) or level-up (endless).
+# Builds picks against the current dungeon's rarity curve and pushes the
+# 3-card overlay onto the active scene.
+func offer_picks(count: int = 3) -> void:
 	var hero_id: StringName = StringName(GameState.selected_character)
 	var dungeon_idx: int = _dungeon_index()
 	var rarity_curve: Dictionary = _rarity_curve_for_dungeon(dungeon_idx)
-	var picks: Array[UpgradeData] = UpgradeRegistry.roll_offer(3, hero_id, owned_stacks, rarity_curve)
+	var picks: Array[UpgradeData] = UpgradeRegistry.roll_offer(count, hero_id, owned_stacks, rarity_curve)
 	if picks.is_empty():
 		return
 	var screen: Node = CHOICE_SCREEN_SCENE.instantiate()
 	if screen == null:
 		return
 	get_tree().current_scene.add_child(screen)
-	# Defer present() so the screen's _ready (which builds the card row) has
-	# fully run before we try to bind picks into it.
 	if screen.has_method("present"):
 		screen.call_deferred("present", picks)
 
