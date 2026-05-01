@@ -1,0 +1,59 @@
+Endless Mode v2 — items deferred from the markdown research,
+implementable in a future polish pass:
+
+VISUAL READABILITY (§8 of portrait research)
+- 1-px white outline on player sprite (player_outline.gdshader)
+- 1-px dark + 1-px brighter inner contour on all enemy sprites
+  (Otherworld Legends double-outline). Apply via Sprite2D shader
+  override in EnemyBase._ready
+- 2-px red pulsing outline on bosses (animated shader uniform)
+- 8-frame white-flash on enemy hit (already partially via existing
+  hit_flash.gdshader; verify duration matches research spec)
+- 32-px parallax dark vignette gradient over top/bottom playfield
+  (Soul Knight pin-edge mitigation) — add as ColorRect to HUD or
+  to the SubViewport's world
+
+PRE-SPAWN TELEGRAPHS (§4 of portrait research)
+- 800ms white pulse along the edge before Vertical Sweep / Pincer /
+  Flank formations (currently they just appear at spawn_radius)
+- Full top-edge red flash 1.5s before boss spawns at 5/10/15 minute
+  timestamps
+- Low rumble bass thump audio cue on boss-imminent
+
+CURRENCY / META (§10 of portrait research)
+- Soulshards exclusive endless currency (deferred per earlier
+  decision — added once the mode has been playtested)
+- Hub vendor for Soulshard meta-perks (+1 starting level, +5% XP
+  gain in endless, etc.)
+
+REAL BIOME ART
+- Replace the programmatic ColorRect floor + dirt patches in
+  Endless.gd._build_world_floor with a proper TileMapLayer + Wang-
+  blob 3-palette tileset (grass / dirt / dark-grass at 30/50/20%)
+- Currently the floor is dark forest green with scattered darker
+  patches — readable but visually flat
+
+MARK SYSTEM REFINEMENTS
+- HurtboxComponent damage_multiplier hook so MarkRegistry-tagged
+  enemies actually take +N% damage from all sources (currently
+  six_eyes/shinigami_eyes are DoT proxies that apply damage at
+  apply-time instead of multiplying incoming damage)
+
+DAMAGE NUMBER STYLING
+- Color/size by tier per research: ≤10 small white, 11-50 yellow,
+  51-200 orange + larger, crit red, evolved-card-crit magenta with
+  2px screenshake. Currently aggregation works but tier-styling
+  isn't applied (the existing DamageNumber.popup signature would
+  need extending)
+
+PERFORMANCE TELEMETRY
+- Add a frame-time profiler hook to Endless.gd that warns if
+  _physics_process budget exceeds 8ms with 15+ active autocasts
+  and 250 enemies (research §8 open question)
+
+OPEN QUESTIONS NOT YET TESTED IN PLAYTEST
+- 0.5x slow-zone multiplier feel
+- 270×480 vs 360×640 viewport size
+- Reaper killable vs instakill at 25:00 (currently killable + hard
+  cap forces death after 8s if survived)
+- Hero affinity weighting at 30+ levels (might be too coherent)
