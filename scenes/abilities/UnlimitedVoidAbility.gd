@@ -8,11 +8,12 @@ extends Ability
 
 const VOID_BUBBLE_TEX: Texture2D = preload("res://art/vfx/void_bubble.svg")
 
-@export var radius: float = 140.0
+@export var radius: float = 91.0
 @export var stun_duration: float = 3.0
 @export var damage_per_sec: int = 1
 @export var bubble_open_seconds: float = 0.35
 @export var bubble_close_seconds: float = 0.45
+@export var execute_overkill: int = 99999
 
 
 func _ready() -> void:
@@ -61,10 +62,14 @@ func _activate() -> void:
 		if enemy == null:
 			continue
 		var is_boss: bool = enemy.is_in_group("boss")
-		stunned.append(enemy)
 		if not is_boss:
-			enemy.set_physics_process(false)
-			enemy.set_process(false)
+			# Anything non-boss caught in the void is annihilated immediately.
+			var ihp: HealthComponent = enemy.get_node_or_null("HealthComponent") as HealthComponent
+			if ihp != null:
+				ihp.take_damage(execute_overkill, p)
+			continue
+		# Bosses stay mobile but get tinted + DoT'd for the duration.
+		stunned.append(enemy)
 		var sprite_node: Node = enemy.get_node_or_null("Sprite2D")
 		if sprite_node == null:
 			sprite_node = enemy.get_node_or_null("Sprite")
