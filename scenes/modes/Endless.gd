@@ -40,6 +40,11 @@ func _ready() -> void:
 	randomize()
 	_ensure_run_stats()
 	_build_render_tree()
+	# Bullets and VFX must spawn inside the SubViewport's world so the
+	# camera transform applies. These overrides are cleared in _exit_tree
+	# (and on death/quit transitions).
+	BulletPool.set_world_root(_world)
+	VFX.set_world_root(_world)
 	_build_world_floor()
 	_build_slow_zones()
 	_spawn_player()
@@ -52,6 +57,13 @@ func _ready() -> void:
 		var um: Node = get_node("/root/UpgradeManager")
 		if um.has_method("reset_for_new_run"):
 			um.call("reset_for_new_run")
+
+
+func _exit_tree() -> void:
+	# Reparent pooled bullets back to the autoload container before our
+	# SubViewport disappears, otherwise the pool entries become invalid.
+	BulletPool.clear_world_root()
+	VFX.clear_world_root()
 
 
 func _ensure_run_stats() -> void:
