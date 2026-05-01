@@ -33,6 +33,20 @@ var _last_alive_prune: float = 0.0
 var _bosses_fired: Array[float] = []
 const BOSS_TIMESTAMPS: Array[float] = [300.0, 600.0, 900.0, 1080.0, 1200.0, 1500.0]
 
+# Map events — scripted timestamps (seconds). Once each unless noted.
+var _events_fired: Array[float] = []
+const CHEST_TIMESTAMPS: Array[float] = [240.0, 540.0, 840.0]  # 4:00, 9:00, 14:00
+const HEAL_SHRINE_TIME: float = 420.0  # 7:00 — persistent
+const CURSE_PILLAR_TIME: float = 600.0  # 10:00
+const STAMPEDE_TIME: float = 780.0  # 13:00
+var _last_bomb_minute: int = -1  # rate-limit ~1 bomb per minute past minute 5
+
+const TREASURE_CHEST: PackedScene = preload("res://scenes/modes/events/TreasureChest.tscn")
+const MAGNET_PICKUP: PackedScene = preload("res://scenes/modes/events/MagnetPickup.tscn")
+const BOMB_PICKUP: PackedScene = preload("res://scenes/modes/events/BombPickup.tscn")
+const HEAL_SHRINE: PackedScene = preload("res://scenes/modes/events/HealShrine.tscn")
+const CURSE_PILLAR: PackedScene = preload("res://scenes/modes/events/CursePillar.tscn")
+
 
 func attach(player: Player, world: Node) -> void:
 	_player = player
@@ -59,6 +73,7 @@ func _physics_process(delta: float) -> void:
 
 	_check_formations()
 	_check_bosses()
+	_check_map_events()
 	_prune_far_enemies(delta)
 
 
@@ -262,3 +277,52 @@ func _alive_count() -> int:
 
 func _on_enemy_freed(e: Node) -> void:
 	_alive_enemies.erase(e)
+
+
+# ---------- Map events ----------
+
+func _check_map_events() -> void:
+	for ts: float in CHEST_TIMESTAMPS:
+		if _t_run_seconds >= ts and not _events_fired.has(ts):
+			_events_fired.append(ts)
+			_spawn_event(TREASURE_CHEST, _player.global_position + Vector2(randf_range(-40, 40), randf_range(-40, 40)))
+	if _t_run_seconds >= HEAL_SHRINE_TIME and not _events_fired.has(HEAL_SHRINE_TIME):
+		_events_fired.append(HEAL_SHRINE_TIME)
+		_spawn_event(HEAL_SHRINE, _player.global_position + Vector2(randf_range(-100, 100), -120.0))
+	if _t_run_seconds >= CURSE_PILLAR_TIME and not _events_fired.has(CURSE_PILLAR_TIME):
+		_events_fired.append(CURSE_PILLAR_TIME)
+		_spawn_event(CURSE_PILLAR, _player.global_position + Vector2(0, 100.0))
+	if _t_run_seconds >= STAMPEDE_TIME and not _events_fired.has(STAMPEDE_TIME):
+		_events_fired.append(STAMPEDE_TIME)
+		_vertical_stampede()
+	# Bomb pickup ~1/min past minute 5
+	var current_minute: int = int(_t_run_seconds) / 60
+	if current_minute >= 5 and current_minute != _last_bomb_minute:
+		_last_bomb_minute = current_minute
+		if randf() < 0.5:  # 50% per minute past 5
+			_spawn_event(BOMB_PICKUP, _player.global_position + Vector2(randf_range(-200, 200), randf_range(-200, 200)))
+
+
+func _spawn_event(scene: PackedScene, pos: Vector2) -> void:
+	if scene == null or _world == null:
+		return
+	var inst: Node = scene.instantiate()
+	if inst == null:
+		return
+	if inst is Node2D:
+		(inst as Node2D).global_position = pos
+	_world.add_child(inst)
+
+
+func _vertical_stampede() -> void:
+	# 30 fast runners traverse south-to-north along the long axis
+	if enemy_pool.is_empty():
+		return
+	var ps: PackedScene = enemy_pool[randi() % enemy_pool.size()]
+	var center_x: float = _player.global_position.x
+	var spawn_y: float = _player.global_position.y + 280.0
+	for i: int in 30:
+		var ox: float = randf_range(-130.0, 130.0)
+		var pos: Vector2 = Vector2(center_x + ox, spawn_y + randf_range(-20, 20))
+		_spawn_at(ps, pos)
+	Events.screen_shake.emit(4.0, 0.4)

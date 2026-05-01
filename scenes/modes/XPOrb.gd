@@ -41,6 +41,7 @@ func configure(t: Tier) -> void:
 
 func _ready() -> void:
 	z_index = 1
+	add_to_group("xp_orb")
 	queue_redraw()
 
 

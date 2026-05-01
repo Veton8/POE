@@ -34,6 +34,7 @@ var _hud: CanvasLayer
 # Run-state for XP / level
 var _xp_current: int = 0
 var _level: int = 1
+var _xp_bonus_mult: float = 1.0  # bumped by Curse Pillar destruction
 
 
 func _ready() -> void:
@@ -273,10 +274,16 @@ func _drop_xp_orb(enemy: Node, pos: Vector2) -> void:
 
 
 func _on_xp_collected(amount: int) -> void:
-	_xp_current += amount
+	_xp_current += int(round(float(amount) * _xp_bonus_mult))
 	while _xp_current >= xp_to_next_level(_level):
 		_xp_current -= xp_to_next_level(_level)
 		_level_up()
+
+
+func apply_xp_bonus(extra: float) -> void:
+	# Called by CursePillar on death — permanent +extra fraction to
+	# every XP gain for the rest of the run.
+	_xp_bonus_mult += extra
 
 
 func xp_to_next_level(lvl: int) -> int:
