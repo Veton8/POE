@@ -13,6 +13,9 @@ extends CanvasLayer
 
 const TOP_BAR_H: int = 24
 const XP_STRIP_H: int = 10
+const BOTTOM_BAND_H: int = 80
+const COOLDOWN_RING_SIZE: int = 16
+const STATUS_STRIP_H: int = 6
 
 var _player: Player
 var _spawner: EndlessSpawner
@@ -27,11 +30,18 @@ var _xp_bg: ColorRect
 var _xp_fill: ColorRect
 var _level_label: Label
 
+var _cooldown_ring_container: Node2D
+var _cooldown_rings: Array[Node2D] = []
+var _ability_refs: Array[Ability] = []
+
+var _status_strip: Node2D
+
 
 func _ready() -> void:
 	layer = 50
 	_build_top_bar()
 	_build_xp_strip()
+	_build_bottom_band()
 
 
 func bind(player: Player, spawner: EndlessSpawner, run: Node) -> void:
@@ -41,6 +51,29 @@ func bind(player: Player, spawner: EndlessSpawner, run: Node) -> void:
 	if _player != null:
 		_player.health_changed.connect(_on_health_changed)
 		_on_health_changed(_player.health.current, _player.health.max_hp)
+		_collect_abilities()
+
+
+func _collect_abilities() -> void:
+	if _player == null:
+		return
+	var ab_root: Node = _player.get_node_or_null("Abilities")
+	if ab_root == null:
+		return
+	for c: Node in ab_root.get_children():
+		if c is Ability:
+			_ability_refs.append(c as Ability)
+	# Build a ring per ability (max 3)
+	if _cooldown_ring_container == null:
+		return
+	for i: int in mini(3, _ability_refs.size()):
+		var ring: Node2D = Node2D.new()
+		ring.set_script(preload("res://scenes/modes/EndlessAbilityRing.gd"))
+		ring.position = Vector2(264 - 8 - 4, 410 + i * 20)
+		_cooldown_ring_container.add_child(ring)
+		if ring.has_method("bind_ability"):
+			ring.call("bind_ability", _ability_refs[i])
+		_cooldown_rings.append(ring)
 
 
 func _build_top_bar() -> void:
@@ -85,6 +118,18 @@ func _build_xp_strip() -> void:
 	_level_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	_level_label.position = Vector2(-64, 0)
 	_xp_bg.add_child(_level_label)
+
+
+func _build_bottom_band() -> void:
+	# Cooldown ring container — positioned at bottom-right of viewport
+	_cooldown_ring_container = Node2D.new()
+	_cooldown_ring_container.name = "CooldownRings"
+	add_child(_cooldown_ring_container)
+	# Status strip — bottom of bottom band
+	_status_strip = Node2D.new()
+	_status_strip.set_script(preload("res://scenes/modes/EndlessStatusStrip.gd"))
+	_status_strip.position = Vector2(0, 480 - STATUS_STRIP_H)
+	add_child(_status_strip)
 
 
 func _make_label(text: String, pos: Vector2, w: float, h: float, align: HorizontalAlignment, font_size: int) -> Label:
