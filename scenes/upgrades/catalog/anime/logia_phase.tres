@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_logiaphase"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"logia_phase"
+display_name = "Logia Phase"
+effect_text = "When struck, chance to dissolve into flame: negate the hit, dash, deal 2x AoE on landing. Caps at 60%."
+flavor_text = "You can't hit what isn't there."
+category = 1
+rarity = 3
+stack_mode = 1
+max_stacks = 6
+weight = 0.6
+tags = Array[StringName]([&"ace", &"fire", &"logia", &"autocast", &"defensive", &"counter"])
+hero_affinity = Array[StringName]([&"ace"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_logia_phase"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"diamond"
+icon_color_primary = Color(0.95, 0.40, 0.20, 1)
+icon_color_accent = Color(1.0, 0.85, 0.50, 1)

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_rasengan"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"rasengan_burst"
+display_name = "Rasengan"
+effect_text = "Every 7s, a chakra orb homes the closest enemy and explodes. Synergy: also fires from each shadow clone."
+flavor_text = "A spinning sphere of pure chakra."
+category = 1
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.7
+tags = Array[StringName]([&"naruto", &"chakra", &"autocast", &"projectile"])
+hero_affinity = Array[StringName]([&"naruto"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_rasengan_burst"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"orb"
+icon_color_primary = Color(0.55, 0.85, 1.0, 1)
+icon_color_accent = Color(1.0, 1.0, 1.0, 1)

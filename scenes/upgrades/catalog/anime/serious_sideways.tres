@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_sidewaysjump"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"serious_sideways"
+display_name = "Serious Sideways Jumps"
+effect_text = "On hit taken, 25% chance to perfect-dodge. Your next autocast within 4s deals 4x damage."
+flavor_text = "Move."
+category = 1
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 0.15
+tags = Array[StringName]([&"saitama", &"autocast", &"counter", &"defensive", &"empower"])
+hero_affinity = Array[StringName]([&"saitama"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_serious_sideways"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"arrow"
+icon_color_primary = Color(1.0, 1.0, 0.50, 1)
+icon_color_accent = Color(1.0, 1.0, 1.0, 1)

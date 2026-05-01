@@ -361,3 +361,267 @@ func _attach_name_inscribed(_u: UpgradeData) -> void:
 	lis.name = "NameInscribedListener"
 	p.add_child(lis)
 	lis.attach_to(p)
+
+
+# ---------- Slice 2C: full autocast catalog ----------
+
+func _attach_hollow_purple(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("HollowPurpleTicker"):
+		return
+	var t: HollowPurpleTicker = HollowPurpleTicker.new()
+	t.name = "HollowPurpleTicker"
+	p.add_child(t)
+
+
+func _attach_six_eyes(_u: UpgradeData) -> void:
+	# Crit chance bump handled via stat_modifiers in the .tres.
+	# Ticker handles the every-6s viewport mark.
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("SixEyesTicker"):
+		return
+	var t: SixEyesTicker = SixEyesTicker.new()
+	t.name = "SixEyesTicker"
+	p.add_child(t)
+
+
+func _attach_kaioken_overdrive(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("KaiokenStateTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: KaiokenStateTicker = KaiokenStateTicker.new()
+	t.name = "KaiokenStateTicker"
+	p.add_child(t)
+
+
+func _attach_spirit_bomb_legacy(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("SpiritBombLegacyTicker"):
+		return
+	var t: SpiritBombLegacyTicker = SpiritBombLegacyTicker.new()
+	t.name = "SpiritBombLegacyTicker"
+	p.add_child(t)
+	t.attach_to(p)
+
+
+func _attach_hiken_jab(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("HikenJabTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: HikenJabTicker = HikenJabTicker.new()
+	t.name = "HikenJabTicker"
+	p.add_child(t)
+
+
+func _attach_enjomo_curtain(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("EnjomoCurtainTicker"):
+		return
+	var t: EnjomoCurtainTicker = EnjomoCurtainTicker.new()
+	t.name = "EnjomoCurtainTicker"
+	p.add_child(t)
+
+
+func _attach_logia_phase(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("LogiaPhaseWatcher")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var w: LogiaPhaseWatcher = LogiaPhaseWatcher.new()
+	w.name = "LogiaPhaseWatcher"
+	p.add_child(w)
+	w.attach_to(p)
+
+
+func _attach_jet_gatling_burst(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("JetGatlingBurstTicker"):
+		return
+	var t: JetGatlingBurstTicker = JetGatlingBurstTicker.new()
+	t.name = "JetGatlingBurstTicker"
+	p.add_child(t)
+
+
+func _attach_elephant_gun_slam(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("ElephantGunSlamTicker"):
+		return
+	var t: ElephantGunSlamTicker = ElephantGunSlamTicker.new()
+	t.name = "ElephantGunSlamTicker"
+	p.add_child(t)
+
+
+func _attach_serious_punch_aura(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("SeriousPunchTicker"):
+		return
+	var t: SeriousPunchTicker = SeriousPunchTicker.new()
+	t.name = "SeriousPunchTicker"
+	p.add_child(t)
+
+
+func _attach_consecutive_normal(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("ConsecutiveNormalTicker"):
+		return
+	var t: ConsecutiveNormalTicker = ConsecutiveNormalTicker.new()
+	t.name = "ConsecutiveNormalTicker"
+	p.add_child(t)
+
+
+func _attach_serious_sideways(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("SeriousSidewaysWatcher"):
+		return
+	var w: SeriousSidewaysWatcher = SeriousSidewaysWatcher.new()
+	w.name = "SeriousSidewaysWatcher"
+	p.add_child(w)
+	w.attach_to(p)
+
+
+func _attach_rasengan_burst(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("RasenganBurstTicker"):
+		return
+	var t: RasenganBurstTicker = RasenganBurstTicker.new()
+	t.name = "RasenganBurstTicker"
+	p.add_child(t)
+
+
+func _attach_rasenshuriken_finisher(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("RasenshurikenTicker"):
+		return
+	var t: RasenshurikenTicker = RasenshurikenTicker.new()
+	t.name = "RasenshurikenTicker"
+	p.add_child(t)
+
+
+func _attach_hardening_spikes(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("HardeningSpikesTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: HardeningSpikesTicker = HardeningSpikesTicker.new()
+	t.name = "HardeningSpikesTicker"
+	p.add_child(t)
+
+
+func _attach_founding_roar(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("FoundingRoarWatcher"):
+		return
+	var w: FoundingRoarWatcher = FoundingRoarWatcher.new()
+	w.name = "FoundingRoarWatcher"
+	p.add_child(w)
+	w.attach_to(p)
+
+
+func _attach_water_breathing(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("WaterBreathingTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: WaterBreathingTicker = WaterBreathingTicker.new()
+	t.name = "WaterBreathingTicker"
+	p.add_child(t)
+
+
+func _attach_hinokami_pulse(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("HinokamiStateTicker"):
+		return
+	var t: HinokamiStateTicker = HinokamiStateTicker.new()
+	t.name = "HinokamiStateTicker"
+	p.add_child(t)
+
+
+func _attach_nichirin_focus(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("NichirinFocusListener")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var l: NichirinFocusListener = NichirinFocusListener.new()
+	l.name = "NichirinFocusListener"
+	p.add_child(l)
+	l.attach_to(p)
+
+
+func _attach_odm_dash_volley(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("OdmDashVolleyTicker"):
+		return
+	var t: OdmDashVolleyTicker = OdmDashVolleyTicker.new()
+	t.name = "OdmDashVolleyTicker"
+	p.add_child(t)
+
+
+func _attach_thunder_spear_volley(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("ThunderSpearVolleyTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: ThunderSpearVolleyTicker = ThunderSpearVolleyTicker.new()
+	t.name = "ThunderSpearVolleyTicker"
+	p.add_child(t)
+
+
+func _attach_humanitys_strongest(_u: UpgradeData) -> void:
+	# Crit damage bump handled via stat_modifiers; listener handles
+	# the on-crit follow-up slash.
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("HumanitysStrongestListener")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var l: HumanitysStrongestListener = HumanitysStrongestListener.new()
+	l.name = "HumanitysStrongestListener"
+	p.add_child(l)
+	l.attach_to(p)
+
+
+func _attach_shinigami_eyes(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("ShinigamiEyesTicker")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var t: ShinigamiEyesTicker = ShinigamiEyesTicker.new()
+	t.name = "ShinigamiEyesTicker"
+	p.add_child(t)
+
+
+func _attach_thirteen_day_curse(_u: UpgradeData) -> void:
+	var p: Player = _get_player() as Player
+	if p == null or p.has_node("ThirteenDayTicker"):
+		return
+	var t: ThirteenDayTicker = ThirteenDayTicker.new()
+	t.name = "ThirteenDayTicker"
+	p.add_child(t)

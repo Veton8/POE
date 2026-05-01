@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_shinigami"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"shinigami_eyes_hex"
+display_name = "Shinigami Eyes"
+effect_text = "Each second, visible enemies have a chance to be hexed. Hexed enemies take bonus damage. Caps at 25%."
+flavor_text = "I see your name."
+category = 1
+rarity = 2
+stack_mode = 1
+max_stacks = 6
+weight = 0.7
+tags = Array[StringName]([&"light", &"mark", &"hex", &"autocast", &"buff"])
+hero_affinity = Array[StringName]([&"light"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_shinigami_eyes"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"eye"
+icon_color_primary = Color(0.95, 0.10, 0.10, 1)
+icon_color_accent = Color(0.04, 0.04, 0.06, 1)

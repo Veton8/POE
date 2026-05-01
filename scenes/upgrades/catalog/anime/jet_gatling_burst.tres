@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_jetgatling"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"jet_gatling_burst"
+display_name = "Jet Gatling Burst"
+effect_text = "Every 9s, fires 16 fast rubber fists in a 45° forward cone."
+flavor_text = "Gomu Gomu no Jet Gatling!"
+category = 1
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.7
+tags = Array[StringName]([&"luffy", &"haki", &"autocast", &"burst"])
+hero_affinity = Array[StringName]([&"luffy"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_jet_gatling_burst"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"bolt"
+icon_color_primary = Color(1.0, 0.50, 0.65, 1)
+icon_color_accent = Color(1.0, 0.85, 0.85, 1)

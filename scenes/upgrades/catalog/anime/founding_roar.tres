@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_founding"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"founding_roar"
+display_name = "Founding Roar"
+effect_text = "When you drop below 25% HP, scream: AoE damage, slow nearby enemies, restore 15 HP. 60s lockout."
+flavor_text = "I'm not done yet!"
+category = 1
+rarity = 4
+stack_mode = 3
+max_stacks = 1
+weight = 0.4
+tags = Array[StringName]([&"eren", &"titan", &"autocast", &"panic", &"defensive"])
+hero_affinity = Array[StringName]([&"eren"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_founding_roar"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"star"
+icon_color_primary = Color(1.0, 0.95, 0.40, 1)
+icon_color_accent = Color(0.95, 0.50, 0.20, 1)

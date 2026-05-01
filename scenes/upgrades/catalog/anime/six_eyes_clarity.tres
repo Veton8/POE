@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://b5up_sixeyes"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeStatModifier.gd" id="2_um"]
+
+[sub_resource type="Resource" id="mod_crit"]
+script = ExtResource("2_um")
+stat_path = NodePath("stats:crit_chance")
+op = 0
+value = 0.12
+hyperbolic_coefficient = 0.0
+
+[resource]
+script = ExtResource("1_ud")
+id = &"six_eyes_clarity"
+display_name = "Six Eyes"
+effect_text = "+12% crit chance per stack. Every 6s, marks visible enemies for bonus damage."
+flavor_text = "What once was hidden is now obvious."
+category = 1
+rarity = 2
+stack_mode = 0
+max_stacks = 3
+weight = 0.9
+tags = Array[StringName]([&"gojo", &"cursed_energy", &"autocast", &"buff", &"mark"])
+hero_affinity = Array[StringName]([&"gojo"])
+stat_modifiers = Array[Resource]([SubResource("mod_crit")])
+component_to_attach = null
+apply_callback = &"_attach_six_eyes"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"eye"
+icon_color_primary = Color(0.50, 0.95, 1.0, 1)
+icon_color_accent = Color(0.10, 0.20, 0.40, 1)

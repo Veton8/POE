@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_odm"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"odm_dash_volley"
+display_name = "ODM Dash Volley"
+effect_text = "Every 6s, ghosts forward and unleashes a 60px spin attack at landing. Snaps back instantly."
+flavor_text = "Vertical maneuvering."
+category = 1
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.7
+tags = Array[StringName]([&"levi", &"odm", &"autocast", &"dash", &"melee"])
+hero_affinity = Array[StringName]([&"levi"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_odm_dash_volley"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"arrow"
+icon_color_primary = Color(0.85, 0.92, 1.0, 1)
+icon_color_accent = Color(0.45, 0.55, 0.75, 1)
