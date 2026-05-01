@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_blueorbital"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"blue_orbital"
+display_name = "Cursed Lapse: Blue"
+effect_text = "Spawns an attractive cursed orb that orbits and drags enemies into itself. +1 orb per stack (cap 4)."
+flavor_text = "Negative space, made physical."
+category = 1
+rarity = 3
+stack_mode = 0
+max_stacks = 4
+weight = 0.8
+tags = Array[StringName]([&"gojo", &"cursed_energy", &"autocast", &"orbital"])
+hero_affinity = Array[StringName]([&"gojo"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_blue_orbital"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"orb"
+icon_color_primary = Color(0.25, 0.40, 0.95, 1)
+icon_color_accent = Color(0.95, 0.97, 1.0, 1)

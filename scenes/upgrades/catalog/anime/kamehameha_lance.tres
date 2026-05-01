@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_kamehameha"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"kamehameha_lance"
+display_name = "Kamehameha Lance"
+effect_text = "Every 8s, charges briefly then fires a piercing cyan beam. Massive damage to anything in line."
+flavor_text = "Ka... me... ha... me..."
+category = 1
+rarity = 3
+stack_mode = 3
+max_stacks = 1
+weight = 0.7
+tags = Array[StringName]([&"goku", &"ki", &"autocast", &"beam"])
+hero_affinity = Array[StringName]([&"goku"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_kamehameha_lance"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"bolt"
+icon_color_primary = Color(0.55, 0.95, 1.0, 1)
+icon_color_accent = Color(1.0, 1.0, 1.0, 1)

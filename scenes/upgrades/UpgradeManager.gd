@@ -315,3 +315,49 @@ func _apply_spirit_bomb(_u: UpgradeData) -> void:
 	var s: SpiritBombStacker = SpiritBombStacker.new()
 	s.name = "SpiritBombStacker"
 	p.add_child(s)
+
+
+# ---------- Slice 2B autocast cards ----------
+
+func _attach_blue_orbital(_u: UpgradeData) -> void:
+	# Gojo orbital pull aura. LINEAR cap 4 — first stack instantiates,
+	# subsequent stacks bump orbit_count up to 4.
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("BlueOrbitalManager")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var mgr: BlueOrbitalManager = BlueOrbitalManager.new()
+	mgr.name = "BlueOrbitalManager"
+	p.add_child(mgr)
+	mgr.attach_to(p)
+
+
+func _attach_kamehameha_lance(_u: UpgradeData) -> void:
+	# Goku timed beam. UNIQUE — only ever one ticker.
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	if p.has_node("KamehamehaLanceTicker"):
+		return
+	var ticker: KamehamehaLanceTicker = KamehamehaLanceTicker.new()
+	ticker.name = "KamehamehaLanceTicker"
+	p.add_child(ticker)
+
+
+func _attach_name_inscribed(_u: UpgradeData) -> void:
+	# Light mark+detonate. LINEAR cap 5 — first stack instantiates,
+	# subsequent stacks bump per-hit chance.
+	var p: Player = _get_player() as Player
+	if p == null:
+		return
+	var existing: Node = p.get_node_or_null("NameInscribedListener")
+	if existing != null and existing.has_method("bump"):
+		existing.call("bump")
+		return
+	var lis: NameInscribedListener = NameInscribedListener.new()
+	lis.name = "NameInscribedListener"
+	p.add_child(lis)
+	lis.attach_to(p)

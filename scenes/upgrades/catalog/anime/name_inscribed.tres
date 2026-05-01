@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://b5up_inscribed"]
+
+[ext_resource type="Script" path="res://scenes/upgrades/UpgradeData.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"name_inscribed"
+display_name = "Name Inscribed"
+effect_text = "On hit, 8% per stack to inscribe an enemy. After 1.5s, detonates for 200% of the triggering damage. Transfers on kill."
+flavor_text = "Forty seconds. Heart attack. No body, no trace."
+category = 1
+rarity = 1
+stack_mode = 0
+max_stacks = 5
+weight = 1.0
+tags = Array[StringName]([&"light", &"mark", &"hex", &"autocast", &"on_hit"])
+hero_affinity = Array[StringName]([&"light"])
+stat_modifiers = Array[Resource]([])
+component_to_attach = null
+apply_callback = &"_attach_name_inscribed"
+requires_tags = Array[StringName]([])
+requires_ids = Array[StringName]([])
+evolves_into = &""
+consumes_on_evolve = Array[StringName]([])
+tradeoff = false
+negative_effects = Array[Resource]([])
+icon_shape = &"cross"
+icon_color_primary = Color(0.04, 0.04, 0.06, 1)
+icon_color_accent = Color(0.95, 0.10, 0.10, 1)
