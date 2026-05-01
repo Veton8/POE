@@ -44,3 +44,7 @@ signal run_completed(victory: bool, stats: Dictionary)
 # Per-run telemetry — emitted from gameplay so RunManager can tally rewards
 @warning_ignore("unused_signal")
 signal coin_pickup(amount: int)
+
+# Endless mode — XP orb pickup. Endless run scene listens to update level.
+@warning_ignore("unused_signal")
+signal xp_collected(amount: int)

@@ -28,6 +28,11 @@ var bullet_knockback: float = 0.0    # negative pushes target away on hit
 var bullet_size_mul: float = 1.0     # visual + radius mul applied at spawn
 var bullet_spread_extra: float = 0.0 # extra fan-radians for spread shot
 
+# Per-frame move-speed multiplier (slow zones in endless mode, etc.).
+# Read in _physics_process; multiple sources stack multiplicatively via
+# enter/exit pairs.
+var move_speed_mul: float = 1.0
+
 @onready var detection: Area2D = $DetectionRange
 @onready var fire_timer: Timer = $FireTimer
 @onready var muzzle: Marker2D = $Muzzle
@@ -99,7 +104,7 @@ func _on_health_changed(current: int, max_hp: int) -> void:
 
 func _physics_process(_delta: float) -> void:
 	move_input = Joystick.get_vector()
-	velocity = move_input * stats.move_speed
+	velocity = move_input * stats.move_speed * move_speed_mul
 	move_and_slide()
 	if absf(move_input.x) > 0.05:
 		sprite.flip_h = move_input.x < 0
