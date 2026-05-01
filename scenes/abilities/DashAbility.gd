@@ -8,6 +8,7 @@ extends Ability
 func _ready() -> void:
 	super._ready()
 	ability_name = "Dash"
+	target_strategy = TargetStrategy.MOVE_INPUT_DIR
 
 func _activate() -> void:
 	var p: Player = get_player()

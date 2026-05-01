@@ -7,6 +7,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Heal"
 	cooldown_seconds = 12.0
+	target_strategy = TargetStrategy.SELF_AOE
 
 func _can_activate() -> bool:
 	var p: Player = get_player()

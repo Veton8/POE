@@ -20,6 +20,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Unlimited Void"
 	cooldown_seconds = 20.0
+	target_strategy = TargetStrategy.SELF_AOE
 
 
 func _can_activate() -> bool:

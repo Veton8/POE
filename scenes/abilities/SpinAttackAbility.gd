@@ -15,6 +15,7 @@ extends Ability
 func _ready() -> void:
 	super._ready()
 	ability_name = "Levi's Spin"
+	target_strategy = TargetStrategy.SELF_AOE
 	cooldown_seconds = 11.0
 
 

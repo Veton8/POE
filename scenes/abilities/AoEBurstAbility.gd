@@ -8,6 +8,7 @@ extends Ability
 func _ready() -> void:
 	super._ready()
 	ability_name = "AoE Burst"
+	target_strategy = TargetStrategy.SELF_AOE
 
 func _activate() -> void:
 	var p: Player = get_player()

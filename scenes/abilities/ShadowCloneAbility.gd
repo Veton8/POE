@@ -15,6 +15,7 @@ extends Ability
 func _ready() -> void:
 	super._ready()
 	ability_name = "Shadow Clone"
+	target_strategy = TargetStrategy.SELF_AOE
 	cooldown_seconds = 10.0
 
 

@@ -21,6 +21,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Gear 2"
 	cooldown_seconds = 10.0
+	target_strategy = TargetStrategy.SELF_AOE
 
 
 func _activate() -> void:

@@ -15,6 +15,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Kaio-ken"
 	cooldown_seconds = 14.0
+	target_strategy = TargetStrategy.SELF_AOE
 
 
 func _can_activate() -> bool:

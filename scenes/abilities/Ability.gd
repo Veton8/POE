@@ -1,12 +1,21 @@
 class_name Ability
 extends Node
 
+# Targeting strategy for autocast mode (endless). The Q/W/E HUD-driven
+# version ignores this; the autocast wrapper reads it to decide whether
+# to fire at all and in which direction.
+#   NEAREST_ENEMY — fire only when Player.current_target exists.
+#   MOVE_INPUT_DIR — fire in move_input direction, fallback last facing.
+#   SELF_AOE — fire regardless of target (centered on player).
+enum TargetStrategy { NEAREST_ENEMY, MOVE_INPUT_DIR, SELF_AOE }
+
 signal cooldown_started(duration: float)
 signal cooldown_ended
 
 @export var cooldown_seconds: float = 3.0
 @export var ability_name: String = ""
 @export var icon: Texture2D
+@export var target_strategy: TargetStrategy = TargetStrategy.NEAREST_ENEMY
 
 var _on_cd: bool = false
 var _t: Timer

@@ -14,6 +14,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Flame Body"
 	cooldown_seconds = 8.0
+	target_strategy = TargetStrategy.MOVE_INPUT_DIR
 
 
 func _activate() -> void:

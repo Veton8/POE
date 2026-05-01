@@ -16,6 +16,7 @@ func _ready() -> void:
 	super._ready()
 	ability_name = "Enjomo"
 	cooldown_seconds = 16.0
+	target_strategy = TargetStrategy.SELF_AOE
 
 
 func _activate() -> void:
