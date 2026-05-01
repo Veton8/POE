@@ -40,6 +40,8 @@ var grasp_budget: int = 3
 var unlocked_dungeons: Array[String] = ["verdant_crypt"]
 var selected_dungeon: String = "verdant_crypt"
 var cleared_dungeons: Array[String] = []
+# Endless mode unlocks after first dungeon clear (any hero, any dungeon).
+var endless_unlocked: bool = false
 
 # Upgrade codex (Phase A power-up persistence). Stored in save.dat as String
 # arrays for forward-compat. Used as a Set via membership checks.
@@ -115,6 +117,7 @@ func save() -> void:
 		"unlocked_dungeons": unlocked_dungeons,
 		"selected_dungeon": selected_dungeon,
 		"cleared_dungeons": cleared_dungeons,
+		"endless_unlocked": endless_unlocked,
 		"seen_upgrade_ids": seen_upgrade_ids,
 		"evolved_upgrade_ids": evolved_upgrade_ids,
 	}
@@ -206,6 +209,10 @@ func load_save() -> void:
 		cleared_dungeons.clear()
 		for x: Variant in (cd as Array):
 			cleared_dungeons.append(str(x))
+	endless_unlocked = bool(data.get("endless_unlocked", false))
+	# Backfill: any save with a cleared dungeon should have endless unlocked.
+	if not endless_unlocked and not cleared_dungeons.is_empty():
+		endless_unlocked = true
 
 
 # ---------- Dungeon registry ----------
@@ -277,6 +284,9 @@ func mark_dungeon_cleared(dungeon_id: String) -> void:
 	for dd: DungeonData in get_all_dungeons_in_order():
 		if not is_dungeon_unlocked(dd.dungeon_id) and dd.unlock_requirement == "complete:" + dungeon_id:
 			unlocked_dungeons.append(dd.dungeon_id)
+	# First-clear of any dungeon unlocks endless mode for this profile.
+	if not endless_unlocked:
+		endless_unlocked = true
 	save()
 
 

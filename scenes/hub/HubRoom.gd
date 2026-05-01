@@ -15,6 +15,7 @@ const CHARACTER_SCREEN_SCENE := preload("res://scenes/hub/CharacterScreen.tscn")
 const GEAR_SCREEN_SCENE := preload("res://scenes/hub/GearScreen.tscn")
 const DUNGEON_SELECT_SCENE := preload("res://scenes/hub/DungeonSelectScreen.tscn")
 const UPGRADE_CODEX_SCENE := preload("res://scenes/hub/UpgradeCodex.tscn")
+const ENDLESS_SCENE_PATH := "res://scenes/modes/Endless.tscn"
 
 @onready var floor_layer: TileMapLayer = $Floor
 @onready var walls_layer: TileMapLayer = $Walls
@@ -100,6 +101,50 @@ func _connect_interactables() -> void:
 	bookshelf.interacted.connect(_open_codex)
 	mailbox.interacted.connect(_open_placeholder.bind("Quests"))
 	hub_door.interacted.connect(_open_dungeon_select)
+	_build_endless_door()
+
+
+func _build_endless_door() -> void:
+	# Programmatic "rift portal" placeholder until biome art exists.
+	# Position is the symmetric counterpart of HubDoor (which is at the
+	# right edge); endless lives at the left edge.
+	var door: HubInteractable = HubInteractable.new()
+	door.name = "EndlessDoor"
+	door.label_text = "ENDLESS" if GameState.endless_unlocked else "ENDLESS (locked)"
+	door.label_offset = Vector2(0, -36)
+
+	# Visual — vertical rift, dark purple outer / bright purple inner
+	var outer: ColorRect = ColorRect.new()
+	outer.color = Color(0.30, 0.10, 0.45)
+	outer.size = Vector2(16, 32)
+	outer.position = Vector2(-8, -16)
+	outer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	door.add_child(outer)
+	var inner: ColorRect = ColorRect.new()
+	inner.color = Color(0.78, 0.42, 1.0)
+	inner.size = Vector2(8, 24)
+	inner.position = Vector2(-4, -12)
+	inner.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	door.add_child(inner)
+
+	var coll: CollisionShape2D = CollisionShape2D.new()
+	var shape: RectangleShape2D = RectangleShape2D.new()
+	shape.size = Vector2(20, 36)
+	coll.shape = shape
+	door.add_child(coll)
+
+	door.position = Vector2(24, 124)
+	var container: Node = get_node("Interactables")
+	container.add_child(door)
+	door.interacted.connect(_on_endless_door_interacted)
+
+
+func _on_endless_door_interacted() -> void:
+	if not GameState.endless_unlocked:
+		Audio.play("player_hurt", 0.05, -8.0)
+		return
+	Audio.play("door_unlock", 0.05, -2.0)
+	get_tree().change_scene_to_file(ENDLESS_SCENE_PATH)
 
 
 func _open_character_screen() -> void:
