@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
 [ext_resource type="Texture2D" path="res://art/characters/player_goku.svg" id="2_pt"]
-[ext_resource type="SpriteFrames" uid="uid://b5gokuframes" path="res://art/characters/goku/goku_frames.tres" id="3_fr"]
+[ext_resource type="SpriteFrames" uid="uid://b5gokufr_sheet" path="res://art/characters/goku/goku_frames_sheet.tres" id="3_fr"]
 [ext_resource type="PackedScene" uid="uid://b5plybul_ki" path="res://scenes/projectiles/PlayerBulletKi.tscn" id="4_bul"]
 [ext_resource type="PackedScene" uid="uid://b5ab_sbomb" path="res://scenes/abilities/SpiritBombAbility.tscn" id="5_q"]
 [ext_resource type="PackedScene" uid="uid://b5ab_kame" path="res://scenes/abilities/KamehamehaAbility.tscn" id="6_w"]
@@ -21,6 +21,8 @@ crit_multiplier = 2.0
 detection_radius = 140.0
 portrait = ExtResource("2_pt")
 frames = ExtResource("3_fr")
+sprite_offset = Vector2(0, 12)
+sprite_scale = Vector2(0.7, 0.7)
 bullet_scene = ExtResource("4_bul")
 ability_q = ExtResource("5_q")
 ability_w = ExtResource("6_w")
