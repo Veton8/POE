@@ -89,13 +89,16 @@ for ($i = 0; $i -lt $byteCount; $i += 4) {
 $rgba.UnlockBits($bData)
 Write-Output ("    keyed {0:N0} of {1:N0} pixels ({2:P1})" -f $keyed, ($w * $h), ($keyed / ($w * $h)))
 
-# Resize 1024x1024 -> 224x320.
+# Resize 1024x1024 -> 224x320 with NearestNeighbor — bilinear/bicubic
+# anti-alias pixel boundaries into mush, killing the crisp pixel-art look
+# of Stitch's source. Nearest preserves blocky edges, which is what we
+# want for a 56x80 sprite that will be displayed at integer scale.
 $out = [System.Drawing.Bitmap]::new(224, 320, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
 $gOut = [System.Drawing.Graphics]::FromImage($out)
-$gOut.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBilinear
-$gOut.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::HighQuality
-$gOut.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::HighQuality
-$gOut.CompositingQuality = [System.Drawing.Drawing2D.CompositingQuality]::HighQuality
+$gOut.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::NearestNeighbor
+$gOut.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::Half
+$gOut.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::None
+$gOut.CompositingQuality = [System.Drawing.Drawing2D.CompositingQuality]::HighSpeed
 $gOut.DrawImage($rgba, [System.Drawing.Rectangle]::new(0, 0, 224, 320))
 $gOut.Dispose()
 
