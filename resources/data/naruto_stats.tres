@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://b5narutostats"]
 
 [ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
-[ext_resource type="SpriteFrames" uid="uid://b5narutofr" path="res://art/characters/naruto/naruto_frames.tres" id="2_fr"]
+[ext_resource type="SpriteFrames" uid="uid://b5narutofr_sheet" path="res://art/characters/naruto/naruto_frames_sheet.tres" id="2_fr"]
 [ext_resource type="PackedScene" uid="uid://b5plybul_ki" path="res://scenes/projectiles/PlayerBulletKi.tscn" id="3_bul"]
 [ext_resource type="PackedScene" uid="uid://b5ab_shadowclone" path="res://scenes/abilities/ShadowCloneAbility.tscn" id="4_q"]
 [ext_resource type="PackedScene" uid="uid://b5ab_kaio" path="res://scenes/abilities/KaiokenAbility.tscn" id="5_w"]
