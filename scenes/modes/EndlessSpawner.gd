@@ -14,7 +14,7 @@ extends Node
 @export var boss_pool: Array[PackedScene] = []
 @export var spawn_radius: float = 280.0
 @export var despawn_radius: float = 480.0
-@export var alive_cap: int = 250
+@export var alive_cap: int = 220
 
 var _player: Player = null
 var _world: Node = null

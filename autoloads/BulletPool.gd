@@ -1,6 +1,6 @@
 extends Node
 
-const POOL_SIZE := 256
+const POOL_SIZE := 384
 
 var _pools: Dictionary = {}
 var _default_container: Node2D

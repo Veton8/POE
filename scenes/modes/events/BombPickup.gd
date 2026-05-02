@@ -3,8 +3,8 @@ extends Area2D
 
 # On player overlap, kills every non-elite non-boss enemy on screen.
 
-const VIEWPORT_HALF_W: float = 135.0
-const VIEWPORT_HALF_H: float = 240.0
+const VIEWPORT_HALF_W: float = 180.0
+const VIEWPORT_HALF_H: float = 320.0
 
 
 func _ready() -> void:

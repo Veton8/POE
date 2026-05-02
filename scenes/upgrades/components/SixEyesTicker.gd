@@ -10,8 +10,8 @@ extends AutocastTicker
 # vulnerability multipliers).
 
 const MARK_ID: StringName = &"six_eyes_vulnerable"
-const VIEWPORT_HALF_W: float = 135.0
-const VIEWPORT_HALF_H: float = 240.0
+const VIEWPORT_HALF_W: float = 180.0
+const VIEWPORT_HALF_H: float = 320.0
 
 @export var mark_duration: float = 3.0
 @export var bonus_damage_mult: float = 0.25

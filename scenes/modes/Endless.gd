@@ -12,16 +12,16 @@ const PLAYER_SCENE: PackedScene = preload("res://scenes/player/Player.tscn")
 const HUD_SCENE: PackedScene = preload("res://scenes/modes/EndlessHUD.tscn")
 const RUN_SUMMARY_SCENE_PATH: String = "res://scenes/hub/RunSummaryScreen.tscn"
 
-const PORTRAIT_W: int = 270
-const PORTRAIT_H: int = 480
+const PORTRAIT_W: int = 360
+const PORTRAIT_H: int = 640
 const TILE_SIZE: int = 16
 const WORLD_TILES: int = 60
 const WORLD_PX: int = WORLD_TILES * TILE_SIZE  # 960
 const SLOW_MARGIN_TILES: int = 4
 const SLOW_MARGIN_PX: int = SLOW_MARGIN_TILES * TILE_SIZE  # 64
 
-const VIEW_HALF_W: int = PORTRAIT_W / 2  # 135
-const VIEW_HALF_H: int = PORTRAIT_H / 2  # 240
+const VIEW_HALF_W: int = PORTRAIT_W / 2  # 180
+const VIEW_HALF_H: int = PORTRAIT_H / 2  # 320
 
 var _viewport: SubViewport
 var _display: TextureRect

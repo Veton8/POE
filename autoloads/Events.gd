@@ -5,6 +5,12 @@ extends Node
 # would otherwise raise are suppressed below — they ARE used, just not
 # inside this file.
 
+# Cap framerate at 60 — game logic (250-entity endless mode) is balanced
+# around 60 Hz physics ticks. ProMotion 120 Hz iPhones would otherwise
+# double per-frame CPU cost. 60fps lock applied at startup.
+func _ready() -> void:
+	Engine.max_fps = 60
+
 @warning_ignore("unused_signal")
 signal screen_shake(amount: float, duration: float)
 

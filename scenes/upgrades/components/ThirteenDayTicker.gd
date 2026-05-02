@@ -7,8 +7,8 @@ extends AutocastTicker
 # instead take 6 × stats.damage.
 
 const MARK_ID: StringName = &"thirteen_day"
-const VIEWPORT_HALF_W: float = 135.0
-const VIEWPORT_HALF_H: float = 240.0
+const VIEWPORT_HALF_W: float = 180.0
+const VIEWPORT_HALF_H: float = 320.0
 
 @export var sentence_delay: float = 3.0
 @export var boss_damage_mult: float = 6.0

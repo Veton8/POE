@@ -8,8 +8,8 @@ extends AutocastTicker
 
 const MAX_STACKS: int = 6
 const MARK_ID: StringName = &"visible_doom"
-const VIEWPORT_HALF_W: float = 135.0
-const VIEWPORT_HALF_H: float = 240.0
+const VIEWPORT_HALF_W: float = 180.0
+const VIEWPORT_HALF_H: float = 320.0
 
 @export var mark_duration: float = 4.0
 @export var bonus_dot_per_tick: float = 0.30  # × stats.damage every tick_dot

@@ -6,8 +6,8 @@ extends CanvasLayer
 # pointing toward the threat. atan2-based screen-rect intersection.
 # Renders at full screen resolution above the SubViewport content.
 
-const VIEWPORT_W: float = 270.0
-const VIEWPORT_H: float = 480.0
+const VIEWPORT_W: float = 360.0
+const VIEWPORT_H: float = 640.0
 const MARGIN: float = 12.0
 
 var _player: Player = null
