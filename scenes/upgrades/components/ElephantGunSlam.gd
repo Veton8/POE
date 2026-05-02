@@ -61,8 +61,7 @@ func _impact() -> void:
 
 func _draw() -> void:
 	if not _impacted:
-		# Telegraph circle — pulsing ring
-		var phase: float = _t / _telegraph
+		# Telegraph circle — pulsing ring (sin-driven on _t)
 		var col: Color = Color(1.0, 0.55, 0.40, 0.50 + 0.45 * sin(_t * 12.0))
 		draw_arc(Vector2.ZERO, _radius, 0.0, TAU, 48, col, 2.0)
 	else:

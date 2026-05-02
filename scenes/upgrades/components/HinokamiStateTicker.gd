@@ -15,24 +15,16 @@ const BURN_COMPONENT_SCRIPT: Script = preload("res://scenes/components/BurnCompo
 @export var burn_dps_mult: float = 0.4
 @export var burn_duration: float = 1.5
 
-var _player: Player = null
 var _state_active: bool = false
 
 
 func _ready() -> void:
 	tick_interval = 11.0
 	super._ready()
-	_resolve_player_local()
-
-
-func _resolve_player_local() -> void:
-	var p: Node = get_parent()
-	while p != null and not (p is Player):
-		p = p.get_parent()
-	if p is Player:
-		_player = p as Player
-		if not _player.bullet_hit.is_connected(_on_bullet_hit):
-			_player.bullet_hit.connect(_on_bullet_hit)
+	# Inherited _player is populated by AutocastTicker._resolve_player()
+	# during super._ready(); connect the bullet_hit listener once.
+	if _player != null and not _player.bullet_hit.is_connected(_on_bullet_hit):
+		_player.bullet_hit.connect(_on_bullet_hit)
 
 
 func _do_cast() -> void:

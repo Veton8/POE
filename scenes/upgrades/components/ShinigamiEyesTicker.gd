@@ -15,22 +15,13 @@ const VIEWPORT_HALF_H: float = 240.0
 @export var bonus_dot_per_tick: float = 0.30  # × stats.damage every tick_dot
 
 var stacks: int = 1
-var _player: Player = null
 
 
 func _ready() -> void:
 	tick_interval = 1.0
 	super._ready()
-	if _player == null:
-		_resolve()
-
-
-func _resolve() -> void:
-	var p: Node = get_parent()
-	while p != null and not (p is Player):
-		p = p.get_parent()
-	if p is Player:
-		_player = p as Player
+	# Inherited _player is populated by AutocastTicker._resolve_player()
+	# during super._ready(); no further setup needed.
 
 
 func bump() -> void:
