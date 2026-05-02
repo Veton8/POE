@@ -1,11 +1,5 @@
 [gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://b5narutofr_sheet"]
 
-# Sheet-based SpriteFrames for the new 16-frame Naruto sprite sheet.
-# Activate by:
-#   1) Saving naruto_sheet.png (112×160, nearest-neighbor) into this folder
-#   2) Pointing naruto_stats.tres frames= at this resource instead of
-#      naruto_frames.tres
-
 [ext_resource type="Texture2D" path="res://art/characters/naruto/naruto_sheet.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="atlas_id_0"]
