@@ -112,8 +112,6 @@ func _physics_process(_delta: float) -> void:
 	move_input = Joystick.get_vector()
 	velocity = move_input * stats.move_speed * move_speed_mul
 	move_and_slide()
-	if absf(move_input.x) > 0.05:
-		sprite.flip_h = move_input.x < 0
 	_update_animation()
 	if not hub_mode:
 		_update_target()
@@ -123,11 +121,31 @@ func _update_animation() -> void:
 	if sprite == null or sprite.sprite_frames == null:
 		return
 	var moving: bool = move_input.length_squared() > 0.01
-	var want: StringName = &"walk" if moving else &"idle"
-	if want == &"walk" and not sprite.sprite_frames.has_animation(&"walk"):
-		want = &"idle"
+	var want: StringName = &"idle"
+	if moving:
+		# Pick the directional walk anim based on which axis dominates.
+		# &"walk" is the default down-facing walk; sheets that include
+		# &"walk_up" / &"walk_side" use those for back-facing and profile
+		# motion. Sheets without those just fall back to &"walk".
+		want = &"walk"
+		if absf(move_input.y) > absf(move_input.x):
+			if move_input.y < 0 and sprite.sprite_frames.has_animation(&"walk_up"):
+				want = &"walk_up"
+		else:
+			if sprite.sprite_frames.has_animation(&"walk_side"):
+				want = &"walk_side"
+	# Fallback chain — drop to whatever the sheet actually has
+	if not sprite.sprite_frames.has_animation(want):
+		want = &"walk" if sprite.sprite_frames.has_animation(&"walk") else &"idle"
 	if sprite.animation != want and sprite.sprite_frames.has_animation(want):
 		sprite.play(want)
+	# Horizontal flip only applies when the side-facing anim is in use
+	# AND we're moving in any horizontal direction. For walk_up and
+	# walk_down (camera-facing) flipping looks wrong.
+	if want == &"walk_side" and absf(move_input.x) > 0.05:
+		sprite.flip_h = move_input.x < 0
+	else:
+		sprite.flip_h = false
 
 func _update_target() -> void:
 	var bodies: Array[Node2D] = detection.get_overlapping_bodies()
