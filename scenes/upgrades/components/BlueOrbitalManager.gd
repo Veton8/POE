@@ -95,7 +95,7 @@ func _pulse() -> void:
 	for orb: Node2D in _orbitals:
 		var center: Vector2 = orb.global_position
 		for n: Node in get_tree().get_nodes_in_group("enemies"):
-			if not (n is Node2D):
+			if not is_instance_valid(n) or not (n is Node2D):
 				continue
 			var n2d: Node2D = n as Node2D
 			if center.distance_squared_to(n2d.global_position) > pull_r2:

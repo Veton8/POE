@@ -147,7 +147,7 @@ func _try_transfer(entry: Dictionary, dead_pos: Vector2) -> void:
 	var best: Node = null
 	var best_d: float = transfer_radius * transfer_radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if MarkRegistry.has_mark(n, MARK_ID):
 			continue

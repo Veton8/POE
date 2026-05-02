@@ -39,7 +39,7 @@ func _nearest_enemy(from: Vector2) -> Node2D:
 	var best: Node2D = null
 	var best_d: float = search_radius * search_radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		var d: float = (n as Node2D).global_position.distance_squared_to(from)
 		if d < best_d:

@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 
 func _explode() -> void:
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(global_position) > _aoe * _aoe:
 			continue

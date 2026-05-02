@@ -48,7 +48,7 @@ func _emit_shockwave() -> void:
 	var origin: Vector2 = _player.global_position
 	var r2: float = radius * radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if origin.distance_squared_to((n as Node2D).global_position) > r2:
 			continue

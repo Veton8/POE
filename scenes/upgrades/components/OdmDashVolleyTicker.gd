@@ -43,7 +43,7 @@ func _do_cast() -> void:
 	# Apply spin damage at target_pos
 	var dmg: int = max(1, int(round(float(p.stats.damage) * damage_mult)))
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(target_pos) > aoe_radius * aoe_radius:
 			continue

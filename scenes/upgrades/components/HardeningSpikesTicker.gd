@@ -52,7 +52,7 @@ func _do_cast() -> void:
 func _enemy_within(p: Player) -> bool:
 	var r2: float = proximity_radius * proximity_radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(p.global_position) <= r2:
 			return true

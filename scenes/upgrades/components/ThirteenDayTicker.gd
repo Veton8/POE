@@ -85,7 +85,7 @@ func _visible_enemies(p: Player) -> Array[Node2D]:
 	var out: Array[Node2D] = []
 	var center: Vector2 = p.global_position
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if MarkRegistry.has_mark(n, MARK_ID):
 			continue

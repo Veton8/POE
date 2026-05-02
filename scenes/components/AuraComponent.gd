@@ -39,7 +39,7 @@ func _pulse() -> void:
 	var center: Vector2 = global_position
 	var r2: float = radius * radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		var n2d: Node2D = n as Node2D
 		if center.distance_squared_to(n2d.global_position) > r2:

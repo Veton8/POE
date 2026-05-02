@@ -41,7 +41,7 @@ func _do_cast() -> void:
 	var bonus: int = max(1, int(round(float(p.stats.damage) * bonus_dot_per_tick)))
 	var pos: Vector2 = p.global_position
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		var n2d: Node2D = n as Node2D
 		var d: Vector2 = n2d.global_position - pos

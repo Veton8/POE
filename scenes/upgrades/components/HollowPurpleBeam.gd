@@ -29,7 +29,7 @@ func _apply_damage() -> void:
 	var inv: Transform2D = global_transform.affine_inverse()
 	var half_w: float = _width * 0.5
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		var local: Vector2 = inv * (n as Node2D).global_position
 		if local.x < 0.0 or local.x > _length:

@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			_traveled += step
 			# Damage anything we touch during travel
 			for n: Node in get_tree().get_nodes_in_group("enemies"):
-				if not (n is Node2D):
+				if not is_instance_valid(n) or not (n is Node2D):
 					continue
 				if _hit_during_travel.has(n):
 					continue
@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 
 func _tick_field() -> void:
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(global_position) > _field_radius * _field_radius:
 			continue

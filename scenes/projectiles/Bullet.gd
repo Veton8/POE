@@ -109,7 +109,7 @@ func _find_homing_target(radius: float) -> Node2D:
 	var best: Node2D = null
 	var best_d: float = radius * radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		var n2d: Node2D = n as Node2D
 		var d: float = global_position.distance_squared_to(n2d.global_position)
@@ -123,7 +123,7 @@ func _find_chain_target(from: Vector2, radius: float) -> Node2D:
 	var best: Node2D = null
 	var best_d: float = radius * radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if _hit_targets.has(n):
 			continue

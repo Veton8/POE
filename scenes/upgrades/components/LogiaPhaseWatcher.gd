@@ -72,7 +72,7 @@ func _on_damaged(_amount: int, _source: Node) -> void:
 	# AoE damage at landing
 	var dmg: int = max(1, int(round(float(_player.stats.damage) * damage_mult)))
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(landing) > aoe_radius * aoe_radius:
 			continue

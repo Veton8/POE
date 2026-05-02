@@ -44,7 +44,7 @@ func _pick_random_enemy_near(p: Player) -> Node2D:
 	var candidates: Array[Node2D] = []
 	var r2: float = punch_radius * punch_radius
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(p.global_position) > r2:
 			continue

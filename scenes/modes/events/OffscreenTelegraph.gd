@@ -27,10 +27,10 @@ func _process(_delta: float) -> void:
 		return
 	var threats: Array[Node2D] = []
 	for n: Node in get_tree().get_nodes_in_group("boss"):
-		if n is Node2D:
+		if is_instance_valid(n) and n is Node2D:
 			threats.append(n as Node2D)
 	for n: Node in get_tree().get_nodes_in_group("reaper"):
-		if n is Node2D and not threats.has(n):
+		if is_instance_valid(n) and n is Node2D and not threats.has(n):
 			threats.append(n as Node2D)
 	# Ensure pool has enough arrows
 	while _arrows.size() < threats.size():

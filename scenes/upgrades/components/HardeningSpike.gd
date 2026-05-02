@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 func _apply() -> void:
 	var hit_radius_sq: float = 10.0 * 10.0
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if (n as Node2D).global_position.distance_squared_to(global_position) > hit_radius_sq:
 			continue

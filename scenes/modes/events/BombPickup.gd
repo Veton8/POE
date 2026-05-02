@@ -30,7 +30,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	var p: Player = body as Player
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is Node2D):
+		if not is_instance_valid(n) or not (n is Node2D):
 			continue
 		if n.is_in_group("boss") or n.is_in_group("elite"):
 			continue
