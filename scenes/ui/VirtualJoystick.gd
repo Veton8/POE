@@ -4,7 +4,7 @@ extends Control
 enum Mode { FIXED, DYNAMIC }
 
 @export var mode: Mode = Mode.DYNAMIC
-@export var max_radius: float = 64.0
+@export var max_radius: float = 25.0
 @export var deadzone: float = 0.15
 @export var active_zone_x_fraction: float = 0.5
 

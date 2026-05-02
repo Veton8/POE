@@ -54,6 +54,7 @@ func _ready() -> void:
 	BulletPool.set_world_root(_world)
 	VFX.set_world_root(_world)
 	_build_world_floor()
+	_build_boundary_walls()
 	_build_slow_zones()
 	_spawn_player()
 	_build_camera()
@@ -139,6 +140,32 @@ func _build_world_floor() -> void:
 		patch.z_index = -9
 		patch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_world.add_child(patch)
+
+
+func _build_boundary_walls() -> void:
+	# Hard walls just outside the world rect so the player can't walk
+	# off into nothing. Slow zones inside are still soft — they just
+	# cap kiting speed near the edge.
+	var wt: float = 32.0  # wall thickness
+	var span: float = float(WORLD_PX) + wt * 2.0
+	var walls: Array[Dictionary] = [
+		{"pos": Vector2(WORLD_PX * 0.5, -wt * 0.5), "size": Vector2(span, wt)},  # top
+		{"pos": Vector2(WORLD_PX * 0.5, WORLD_PX + wt * 0.5), "size": Vector2(span, wt)},  # bottom
+		{"pos": Vector2(-wt * 0.5, WORLD_PX * 0.5), "size": Vector2(wt, span)},  # left
+		{"pos": Vector2(WORLD_PX + wt * 0.5, WORLD_PX * 0.5), "size": Vector2(wt, span)},  # right
+	]
+	for w: Dictionary in walls:
+		var sb: StaticBody2D = StaticBody2D.new()
+		sb.name = "BoundaryWall"
+		sb.collision_layer = 1  # world layer
+		sb.collision_mask = 0
+		var coll: CollisionShape2D = CollisionShape2D.new()
+		var rect: RectangleShape2D = RectangleShape2D.new()
+		rect.size = w["size"]
+		coll.shape = rect
+		sb.add_child(coll)
+		sb.position = w["pos"]
+		_world.add_child(sb)
 
 
 func _build_slow_zones() -> void:
