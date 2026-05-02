@@ -213,17 +213,19 @@ func _spawn_player() -> void:
 
 func _build_camera() -> void:
 	# Camera lives as a Player child so it follows automatically.
-	# Limits constrain to the world rect minus half the viewport so
-	# the camera never reveals beyond the slow-zone outer edge.
+	# Limits unbounded — camera always centers exactly on the player,
+	# even at the slow-zone edges. Past the world rect the viewport
+	# shows black void, which is the intended trade-off for keeping
+	# the player visually pinned at screen center.
 	_camera = ShakeCamera2D.new()
 	_player.add_child(_camera)
 	_camera.make_current()
-	# Override _ready()'s landscape-mode defaults
-	_camera.limit_left = VIEW_HALF_W
-	_camera.limit_top = VIEW_HALF_H
-	_camera.limit_right = WORLD_PX - VIEW_HALF_W
-	_camera.limit_bottom = WORLD_PX - VIEW_HALF_H
-	_camera.offset = Vector2(0, -24)  # bias player ~5% below center
+	# Override ShakeCamera2D._ready()'s 480×270 defaults
+	_camera.limit_left = -10000000
+	_camera.limit_top = -10000000
+	_camera.limit_right = 10000000
+	_camera.limit_bottom = 10000000
+	_camera.offset = Vector2.ZERO
 	_camera.position_smoothing_enabled = true
 	_camera.position_smoothing_speed = 8.0
 
