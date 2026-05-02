@@ -1,153 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5hubroom001"]
+[gd_scene load_steps=5 format=3 uid="uid://b5hubroom001"]
 
 [ext_resource type="Script" path="res://scenes/hub/HubRoom.gd" id="1_hub"]
-[ext_resource type="Script" path="res://scenes/hub/HubInteractable.gd" id="2_int"]
-[ext_resource type="TileSet" uid="uid://b5tilesetd001" path="res://tilesets/dungeon_tileset.tres" id="3_ts"]
-[ext_resource type="Texture2D" path="res://art/hub/anvil.svg" id="4_anvil"]
-[ext_resource type="Texture2D" path="res://art/hub/shrine.svg" id="5_shrine"]
-[ext_resource type="Texture2D" path="res://art/hub/bookshelf.svg" id="6_book"]
-[ext_resource type="Texture2D" path="res://art/hub/mailbox.svg" id="7_mail"]
-[ext_resource type="Texture2D" path="res://art/hub/hub_door.svg" id="8_door"]
-[ext_resource type="Texture2D" path="res://art/hub/play_arrow.svg" id="9_arrow"]
-[ext_resource type="Texture2D" path="res://art/characters/player_knight.svg" id="10_knight"]
-[ext_resource type="Texture2D" path="res://art/ui/coin_icon.svg" id="11_coin"]
-[ext_resource type="Texture2D" path="res://art/ui/gem_icon.svg" id="12_gem"]
-[ext_resource type="Texture2D" path="res://art/ui/sp_icon.svg" id="13_sp"]
-[ext_resource type="Texture2D" path="res://art/ui/settings_icon.svg" id="14_set"]
-
-[sub_resource type="CircleShape2D" id="cs_pedestal"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="cs_anvil"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="cs_shrine"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="cs_book"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="cs_mail"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="cs_door"]
-radius = 28.0
-
-[sub_resource type="CircleShape2D" id="cs_pedestal_block"]
-radius = 8.0
+[ext_resource type="Texture2D" path="res://art/ui/coin_icon.svg" id="2_coin"]
+[ext_resource type="Texture2D" path="res://art/ui/gem_icon.svg" id="3_gem"]
+[ext_resource type="Texture2D" path="res://art/ui/sp_icon.svg" id="4_sp"]
 
 [node name="HubRoom" type="Node2D"]
 script = ExtResource("1_hub")
 
-[node name="Floor" type="TileMapLayer" parent="."]
-tile_set = ExtResource("3_ts")
-collision_enabled = false
-
-[node name="Walls" type="TileMapLayer" parent="."]
-tile_set = ExtResource("3_ts")
-collision_enabled = true
-
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(240, 180)
-
-[node name="LockedSilhouette" type="Sprite2D" parent="."]
-position = Vector2(56, 100)
-modulate = Color(0.15, 0.15, 0.2, 0.85)
-texture = ExtResource("10_knight")
-visible = false
-
-[node name="PedestalBase" type="Sprite2D" parent="."]
-position = Vector2(80, 130)
-modulate = Color(0.6, 0.6, 0.65, 1)
-texture = ExtResource("4_anvil")
-scale = Vector2(0.6, 0.4)
+position = Vector2(256, 220)
 
 [node name="Interactables" type="Node2D" parent="."]
-
-[node name="HeroPedestal" type="Area2D" parent="Interactables"]
-position = Vector2(80, 110)
-script = ExtResource("2_int")
-label_text = "Hero"
-label_offset = Vector2(0, -36)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/HeroPedestal"]
-shape = SubResource("cs_pedestal")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/HeroPedestal"]
-texture = ExtResource("10_knight")
-scale = Vector2(1.2, 1.2)
-
-[node name="Anvil" type="Area2D" parent="Interactables"]
-position = Vector2(155, 130)
-script = ExtResource("2_int")
-label_text = "Gear"
-label_offset = Vector2(0, -28)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Anvil"]
-shape = SubResource("cs_anvil")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Anvil"]
-texture = ExtResource("4_anvil")
-
-[node name="Shrine" type="Area2D" parent="Interactables"]
-position = Vector2(225, 124)
-script = ExtResource("2_int")
-label_text = "Talents"
-label_offset = Vector2(0, -34)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Shrine"]
-shape = SubResource("cs_shrine")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Shrine"]
-texture = ExtResource("5_shrine")
-
-[node name="Bookshelf" type="Area2D" parent="Interactables"]
-position = Vector2(295, 124)
-script = ExtResource("2_int")
-label_text = "Codex"
-label_offset = Vector2(0, -34)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bookshelf"]
-shape = SubResource("cs_book")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Bookshelf"]
-texture = ExtResource("6_book")
-
-[node name="Mailbox" type="Area2D" parent="Interactables"]
-position = Vector2(355, 124)
-script = ExtResource("2_int")
-label_text = "Quests"
-label_offset = Vector2(0, -34)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Mailbox"]
-shape = SubResource("cs_mail")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/Mailbox"]
-texture = ExtResource("7_mail")
-
-[node name="HubDoor" type="Area2D" parent="Interactables"]
-position = Vector2(420, 124)
-script = ExtResource("2_int")
-label_text = "Play"
-label_offset = Vector2(0, -42)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/HubDoor"]
-shape = SubResource("cs_door")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/HubDoor"]
-texture = ExtResource("8_door")
-
-[node name="PlayArrow" type="Sprite2D" parent="Interactables/HubDoor"]
-position = Vector2(0, -32)
-texture = ExtResource("9_arrow")
-
-[node name="PedestalBlocker" type="StaticBody2D" parent="."]
-position = Vector2(80, 116)
-collision_layer = 1
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PedestalBlocker"]
-shape = SubResource("cs_pedestal_block")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -162,7 +26,7 @@ offset_bottom = 18.0
 
 [node name="CoinIcon" type="TextureRect" parent="UILayer/TopBar/CoinBox"]
 custom_minimum_size = Vector2(10, 10)
-texture = ExtResource("11_coin")
+texture = ExtResource("2_coin")
 
 [node name="CoinLabel" type="Label" parent="UILayer/TopBar/CoinBox"]
 custom_minimum_size = Vector2(36, 12)
@@ -174,7 +38,7 @@ vertical_alignment = 1
 
 [node name="GemIcon" type="TextureRect" parent="UILayer/TopBar/GemBox"]
 custom_minimum_size = Vector2(10, 10)
-texture = ExtResource("12_gem")
+texture = ExtResource("3_gem")
 
 [node name="GemLabel" type="Label" parent="UILayer/TopBar/GemBox"]
 custom_minimum_size = Vector2(28, 12)
@@ -186,7 +50,7 @@ vertical_alignment = 1
 
 [node name="SPIcon" type="TextureRect" parent="UILayer/TopBar/SPBox"]
 custom_minimum_size = Vector2(10, 10)
-texture = ExtResource("13_sp")
+texture = ExtResource("4_sp")
 
 [node name="SPLabel" type="Label" parent="UILayer/TopBar/SPBox"]
 custom_minimum_size = Vector2(28, 12)
@@ -194,16 +58,9 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="UILayer"]
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 18.0
-offset_bottom = 16.0
-texture_normal = ExtResource("14_set")
-
 [node name="HubTitle" type="Label" parent="UILayer"]
 offset_left = 6.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 200.0
-offset_bottom = 32.0
+offset_bottom = 18.0
 text = "PATH OF EVIL"
