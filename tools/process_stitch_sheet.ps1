@@ -18,7 +18,12 @@
 param(
     [Parameter(Mandatory=$true)] [string]$src,
     [Parameter(Mandatory=$true)] [string]$dst,
-    [int]$tolerance = 35
+    [int]$tolerance = 35,
+    # Target sheet dimensions. Source cells are 256x256 (1024/4); for crisp
+    # nearest-neighbor downsample the per-cell size must divide 256 cleanly,
+    # so a 4x4 grid of 64x64 cells -> 256x256 sheet is the right default.
+    [int]$outWidth = 256,
+    [int]$outHeight = 256
 )
 
 Add-Type -AssemblyName System.Drawing
@@ -93,13 +98,13 @@ Write-Output ("    keyed {0:N0} of {1:N0} pixels ({2:P1})" -f $keyed, ($w * $h),
 # anti-alias pixel boundaries into mush, killing the crisp pixel-art look
 # of Stitch's source. Nearest preserves blocky edges, which is what we
 # want for a 56x80 sprite that will be displayed at integer scale.
-$out = [System.Drawing.Bitmap]::new(224, 320, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+$out = [System.Drawing.Bitmap]::new($outWidth, $outHeight, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
 $gOut = [System.Drawing.Graphics]::FromImage($out)
 $gOut.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::NearestNeighbor
 $gOut.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::Half
 $gOut.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::None
 $gOut.CompositingQuality = [System.Drawing.Drawing2D.CompositingQuality]::HighSpeed
-$gOut.DrawImage($rgba, [System.Drawing.Rectangle]::new(0, 0, 224, 320))
+$gOut.DrawImage($rgba, [System.Drawing.Rectangle]::new(0, 0, $outWidth, $outHeight))
 $gOut.Dispose()
 
 $out.Save($dst, [System.Drawing.Imaging.ImageFormat]::Png)
