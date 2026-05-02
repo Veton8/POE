@@ -42,7 +42,7 @@ func _activate() -> void:
 	VFX.spawn_death_particles(explosion_pos)
 
 	for enemy: Node in p.get_tree().get_nodes_in_group("enemies"):
-		if not (enemy is Node2D):
+		if not is_instance_valid(enemy) or not (enemy is Node2D):
 			continue
 		var e2d: Node2D = enemy as Node2D
 		if explosion_pos.distance_to(e2d.global_position) > explosion_radius:

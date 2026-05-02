@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 		var k: int = int(k_v)
 		var entry: Dictionary = _agg_active[k]
 		var label_v: Variant = entry.get("label", null)
-		if not (label_v is Label) or not is_instance_valid(label_v as Label):
+		if not is_instance_valid(label_v) or not (label_v is Label):
 			stale.append(k)
 			continue
 		if int(entry["expires_msec"]) < now:

@@ -84,7 +84,7 @@ func _apply_mark(enemy: Node, trigger_damage: int) -> void:
 
 
 func _spawn_glyph(enemy: Node) -> Node2D:
-	if not (enemy is Node2D):
+	if not is_instance_valid(enemy) or not (enemy is Node2D):
 		return null
 	var glyph: Node2D = Node2D.new()
 	glyph.set_script(preload("res://scenes/upgrades/components/InscribedGlyph.gd"))

@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 func _pulse_buff() -> void:
 	var any: bool = false
 	for n in get_tree().get_nodes_in_group("enemies"):
-		if n == self or not (n is EnemyBase):
+		if not is_instance_valid(n) or n == self or not (n is EnemyBase):
 			continue
 		var e: EnemyBase = n as EnemyBase
 		if global_position.distance_to(e.global_position) > buff_radius:

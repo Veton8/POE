@@ -50,7 +50,7 @@ func _on_body_exited(body: Node) -> void:
 
 func _heal() -> void:
 	for n: Node in get_tree().get_nodes_in_group("player"):
-		if not (n is Player):
+		if not is_instance_valid(n) or not (n is Player):
 			continue
 		var p: Player = n as Player
 		if p.health == null:

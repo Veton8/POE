@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 func _heal_nearby() -> void:
 	var healed_any: bool = false
 	for n in get_tree().get_nodes_in_group("enemies"):
-		if n == self or not (n is Node2D):
+		if not is_instance_valid(n) or n == self or not (n is Node2D):
 			continue
 		if global_position.distance_to((n as Node2D).global_position) > heal_radius:
 			continue

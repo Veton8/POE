@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 func _unleash() -> void:
 	for n: Node in get_tree().get_nodes_in_group("enemies"):
-		if not (n is EnemyBase):
+		if not is_instance_valid(n) or not (n is EnemyBase):
 			continue
 		var existing: Node = n.get_node_or_null("BuffComponent")
 		if existing is BuffComponent:
