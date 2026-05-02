@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
 [ext_resource type="Texture2D" path="res://art/characters/player_luffy.svg" id="2_pt"]
-[ext_resource type="SpriteFrames" uid="uid://b5luffyframes" path="res://art/characters/luffy/luffy_frames.tres" id="3_fr"]
+[ext_resource type="SpriteFrames" uid="uid://b5luffyfr_sheet" path="res://art/characters/luffy/luffy_frames_sheet.tres" id="3_fr"]
 [ext_resource type="PackedScene" uid="uid://b5plybul_rub" path="res://scenes/projectiles/PlayerBulletRubber.tscn" id="4_bul"]
 [ext_resource type="PackedScene" uid="uid://b5ab_gear2" path="res://scenes/abilities/Gear2Ability.tscn" id="5_q"]
 [ext_resource type="PackedScene" uid="uid://b5ab_gatling" path="res://scenes/abilities/JetGatlingAbility.tscn" id="6_w"]
@@ -21,6 +21,8 @@ crit_multiplier = 1.8
 detection_radius = 120.0
 portrait = ExtResource("2_pt")
 frames = ExtResource("3_fr")
+sprite_offset = Vector2(0, 12)
+sprite_scale = Vector2(0.7, 0.7)
 bullet_scene = ExtResource("4_bul")
 ability_q = ExtResource("5_q")
 ability_w = ExtResource("6_w")
