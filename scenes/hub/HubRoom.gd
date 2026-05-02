@@ -15,6 +15,7 @@ const VIRTUAL_JOYSTICK_SCENE := preload("res://scenes/ui/VirtualJoystick.tscn")
 const HUB_ROOM_TEXTURE := preload("res://art/hub/hub_room.png")
 const HERO_BOOK_TEXTURE := preload("res://art/hub/hero_book.png")
 const DUNGEON_PORTAL_TEXTURE := preload("res://art/hub/dungeon_portal.png")
+const ENDLESS_PORTAL_TEXTURE := preload("res://art/hub/endless_portal.png")
 const ENDLESS_SCENE_PATH := "res://scenes/modes/Endless.tscn"
 
 const ROOM_W := 512
@@ -127,33 +128,13 @@ func _build_interactables() -> void:
 
 
 func _build_endless_portal() -> void:
-	# Programmatic placeholder until the endless_portal.png asset arrives.
-	# Vertical purple rift with an outer dark frame and a brighter inner glow.
-	var door: HubInteractable = HubInteractable.new()
-	door.name = "EndlessPortal"
-	door.label_text = "ENDLESS" if GameState.endless_unlocked else "ENDLESS (locked)"
-	door.label_offset = Vector2(0, -64)
-	var outer: ColorRect = ColorRect.new()
-	outer.color = Color(0.30, 0.10, 0.45)
-	outer.size = Vector2(48, 96)
-	outer.position = Vector2(-24, -48)
-	outer.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	door.add_child(outer)
-	var inner: ColorRect = ColorRect.new()
-	inner.color = Color(0.78, 0.42, 1.0)
-	inner.size = Vector2(24, 72)
-	inner.position = Vector2(-12, -36)
-	inner.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	door.add_child(inner)
-	var coll: CollisionShape2D = CollisionShape2D.new()
-	var shape: RectangleShape2D = RectangleShape2D.new()
-	shape.size = Vector2(56, 100)
-	coll.shape = shape
-	door.add_child(coll)
-	door.position = Vector2(96, 160)
-	interactables_node.add_child(door)
+	var door: HubInteractable = _make_sprite_interactable("EndlessPortal", _endless_label_text(), ENDLESS_PORTAL_TEXTURE, Vector2(96, 156))
 	door.interacted.connect(_on_endless_portal_interacted)
 	_endless_door = door
+
+
+func _endless_label_text() -> String:
+	return "ENDLESS" if GameState.endless_unlocked else "ENDLESS (locked)"
 
 
 func _build_hero_book() -> void:
@@ -275,7 +256,7 @@ func _on_currency_changed(_amount: int) -> void:
 
 func _refresh_endless_label() -> void:
 	if _endless_door != null and is_instance_valid(_endless_door):
-		_endless_door.label_text = "ENDLESS" if GameState.endless_unlocked else "ENDLESS (locked)"
+		_endless_door.label_text = _endless_label_text()
 
 
 func _respawn_hub_player() -> void:
