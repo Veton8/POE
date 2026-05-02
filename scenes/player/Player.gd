@@ -94,6 +94,7 @@ func _setup_sprite_frames() -> void:
 	# character floats in the upper part of the cell with empty space
 	# below. Naruto needs ~+12 to drop his feet onto the shadow.
 	sprite.offset = stats.sprite_offset
+	sprite.scale = stats.sprite_scale
 	# Reposition the shadow to sit at the sprite's feet — auto-scales with sprite height
 	# so 16x16 portraits and 32x48 hero sprites both get the right shadow placement.
 	# The shadow does NOT track sprite_offset — that offset shifts the sprite down to
@@ -102,7 +103,7 @@ func _setup_sprite_frames() -> void:
 	if shadow != null and sprite.sprite_frames != null:
 		var tex: Texture2D = sprite.sprite_frames.get_frame_texture(&"idle", 0)
 		if tex != null:
-			shadow.position.y = float(tex.get_height()) * 0.5 - 2.0
+			shadow.position.y = float(tex.get_height()) * sprite.scale.y * 0.5 - 2.0
 
 
 func _on_health_changed(current: int, max_hp: int) -> void:

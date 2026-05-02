@@ -20,6 +20,7 @@ crit_multiplier = 1.8
 detection_radius = 130.0
 frames = ExtResource("2_fr")
 sprite_offset = Vector2(0, 12)
+sprite_scale = Vector2(0.7, 0.7)
 bullet_scene = ExtResource("3_bul")
 ability_q = ExtResource("4_q")
 ability_w = ExtResource("5_w")

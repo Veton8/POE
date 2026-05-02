@@ -24,6 +24,12 @@ extends Resource
 # part of the frame). Default Vector2.ZERO means no shift.
 @export var sprite_offset: Vector2 = Vector2.ZERO
 
+# Per-character render scale for the AnimatedSprite2D. Used to right-size
+# heroes whose source sheets are larger than the project's pixel-art budget
+# (e.g. Naruto's 56x80 cells vs. the 28x40 SVG heroes). Default Vector2.ONE
+# leaves the sprite at native resolution.
+@export var sprite_scale: Vector2 = Vector2.ONE
+
 # Optional per-character bullet override. If null, the Player falls back to its
 # scene-baked default bullet. Projectile on-hit effects (burn, pull, pierce)
 # live on the bullet scene itself.
