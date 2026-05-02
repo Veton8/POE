@@ -15,6 +15,7 @@ const CHARACTER_SCREEN_SCENE := preload("res://scenes/hub/CharacterScreen.tscn")
 const GEAR_SCREEN_SCENE := preload("res://scenes/hub/GearScreen.tscn")
 const DUNGEON_SELECT_SCENE := preload("res://scenes/hub/DungeonSelectScreen.tscn")
 const UPGRADE_CODEX_SCENE := preload("res://scenes/hub/UpgradeCodex.tscn")
+const VIRTUAL_JOYSTICK_SCENE := preload("res://scenes/ui/VirtualJoystick.tscn")
 const ENDLESS_SCENE_PATH := "res://scenes/modes/Endless.tscn"
 
 @onready var floor_layer: TileMapLayer = $Floor
@@ -43,11 +44,25 @@ func _ready() -> void:
 	_paint_floor()
 	_spawn_hub_player()
 	_connect_interactables()
+	_install_virtual_joystick()
 	_refresh_currency_labels()
 	_refresh_locked_silhouette()
 	Events.coins_changed.connect(_on_currency_changed)
 	Events.gems_changed.connect(_on_currency_changed)
 	Events.skill_points_changed.connect(_on_currency_changed)
+
+
+func _install_virtual_joystick() -> void:
+	# Touch input source. Without this the hub is keyboard-only on
+	# phones — VirtualJoystick.register()s with the Joystick autoload
+	# in its _ready() so Player.move_input picks it up automatically.
+	if ui_layer == null:
+		return
+	var joy: Control = VIRTUAL_JOYSTICK_SCENE.instantiate() as Control
+	if joy == null:
+		return
+	joy.name = "VirtualJoystick"
+	ui_layer.add_child(joy)
 
 
 func _process(delta: float) -> void:

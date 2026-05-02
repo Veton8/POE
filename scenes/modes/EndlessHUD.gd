@@ -16,6 +16,7 @@ const XP_STRIP_H: int = 10
 const BOTTOM_BAND_H: int = 80
 const COOLDOWN_RING_SIZE: int = 16
 const STATUS_STRIP_H: int = 6
+const VIRTUAL_JOYSTICK_SCENE: PackedScene = preload("res://scenes/ui/VirtualJoystick.tscn")
 
 var _player: Player
 var _spawner: EndlessSpawner
@@ -42,6 +43,18 @@ func _ready() -> void:
 	_build_top_bar()
 	_build_xp_strip()
 	_build_bottom_band()
+	_install_virtual_joystick()
+
+
+func _install_virtual_joystick() -> void:
+	# Touch input source for endless mode. Same VirtualJoystick scene
+	# the dungeon HUD uses — registers itself with the Joystick
+	# autoload so Player movement reads from touch automatically.
+	var joy: Control = VIRTUAL_JOYSTICK_SCENE.instantiate() as Control
+	if joy == null:
+		return
+	joy.name = "VirtualJoystick"
+	add_child(joy)
 
 
 func bind(player: Player, spawner: EndlessSpawner, run: Node) -> void:
