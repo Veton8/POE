@@ -102,8 +102,9 @@ func spawn_damage_number(pos: Vector2, value: int, crit: bool = false, color: Co
 	var now: int = Time.get_ticks_msec()
 	if _agg_active.has(key):
 		var entry: Dictionary = _agg_active[key]
-		var label: Label = entry["label"] as Label
-		if is_instance_valid(label):
+		var raw: Variant = entry["label"]
+		if is_instance_valid(raw):
+			var label: Label = raw as Label
 			entry["total"] = int(entry["total"]) + value
 			entry["crit"] = bool(entry["crit"]) or crit
 			entry["expires_msec"] = now + DAMAGE_AGG_WINDOW_MS
@@ -111,9 +112,8 @@ func spawn_damage_number(pos: Vector2, value: int, crit: bool = false, color: Co
 			if label.has_method("popup"):
 				label.call("popup", int(entry["total"]), bool(entry["crit"]), color)
 			return
-		else:
-			_agg_active.erase(key)
-			_agg_active_count = maxi(0, _agg_active_count - 1)
+		_agg_active.erase(key)
+		_agg_active_count = maxi(0, _agg_active_count - 1)
 	# Cap simultaneous active labels — drop oldest if over limit
 	if _agg_active_count >= DAMAGE_AGG_MAX:
 		var oldest_key: int = 0
@@ -125,9 +125,9 @@ func spawn_damage_number(pos: Vector2, value: int, crit: bool = false, color: Co
 				oldest_t = int(e["expires_msec"])
 				oldest_key = k
 		var oldest_entry: Dictionary = _agg_active[oldest_key]
-		var oldest_label: Label = oldest_entry["label"] as Label
-		if is_instance_valid(oldest_label):
-			oldest_label.queue_free()
+		var oldest_raw: Variant = oldest_entry["label"]
+		if is_instance_valid(oldest_raw):
+			(oldest_raw as Label).queue_free()
 		_agg_active.erase(oldest_key)
 		_agg_active_count = maxi(0, _agg_active_count - 1)
 	# Spawn fresh label

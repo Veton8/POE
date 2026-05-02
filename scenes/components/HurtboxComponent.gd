@@ -7,8 +7,11 @@ signal hit_taken(amount: int, source: Node)
 @export var sprite_to_flash: CanvasItem
 
 func _ready() -> void:
-	monitoring = false
-	monitorable = true
+	# Bosses get add_child'd from _start_boss, which itself runs from a signal
+	# during a physics flush. Direct writes to monitoring/monitorable in that
+	# context are blocked by Godot 4 — defer the meaningful change and drop
+	# the redundant monitorable assignment (true is the Area2D default).
+	set_deferred("monitoring", false)
 	if sprite_to_flash and sprite_to_flash.material is ShaderMaterial:
 		(sprite_to_flash.material as ShaderMaterial).resource_local_to_scene = true
 
