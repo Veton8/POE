@@ -18,6 +18,12 @@ extends Resource
 # from `portrait` so unconverted characters keep working unchanged.
 @export var frames: SpriteFrames
 
+# Per-character sprite offset for the AnimatedSprite2D. Shifts the rendered
+# sprite within its cell when the source art has uneven padding around the
+# character (e.g. AI-generated sheets where the figure floats in the upper
+# part of the frame). Default Vector2.ZERO means no shift.
+@export var sprite_offset: Vector2 = Vector2.ZERO
+
 # Optional per-character bullet override. If null, the Player falls back to its
 # scene-baked default bullet. Projectile on-hit effects (burn, pull, pierce)
 # live on the bullet scene itself.
