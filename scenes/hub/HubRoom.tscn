@@ -9,7 +9,7 @@
 script = ExtResource("1_hub")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(256, 220)
+position = Vector2(256, 310)
 
 [node name="Interactables" type="Node2D" parent="."]
 

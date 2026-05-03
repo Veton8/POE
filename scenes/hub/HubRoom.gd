@@ -19,13 +19,18 @@ const ENDLESS_PORTAL_TEXTURE := preload("res://art/hub/endless_portal.png")
 const ENDLESS_SCENE_PATH := "res://scenes/modes/Endless.tscn"
 
 const ROOM_W := 512
-const ROOM_H := 288
-const ROOM_CENTER := Vector2(256, 144)
-# Walkable rectangle inside the back-wall + foreground border.
+const ROOM_H := 512
+# Background sprite sits centred on the 512x512 room. Camera is offset
+# upward so the back-wall pillar + banner read fully (the bottom 152
+# pixels of the room are the foreground/mist that we don't need visible).
+const BG_CENTER := Vector2(256, 256)
+const CAMERA_CENTER := Vector2(256, 180)
+# Walkable rectangle — set inside the back-wall pillar bottom and just
+# above the camera's bottom edge.
 const FLOOR_LEFT := 40
 const FLOOR_RIGHT := 472
-const FLOOR_TOP := 88
-const FLOOR_BOTTOM := 256
+const FLOOR_TOP := 180
+const FLOOR_BOTTOM := 330
 
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var ui_layer: CanvasLayer = $UILayer
@@ -56,7 +61,7 @@ func _build_background() -> void:
 	var bg: Sprite2D = Sprite2D.new()
 	bg.name = "Background"
 	bg.texture = HUB_ROOM_TEXTURE
-	bg.position = ROOM_CENTER
+	bg.position = BG_CENTER
 	bg.z_index = -10
 	add_child(bg)
 
@@ -64,7 +69,7 @@ func _build_background() -> void:
 func _build_camera() -> void:
 	var cam: Camera2D = Camera2D.new()
 	cam.name = "Camera2D"
-	cam.position = ROOM_CENTER
+	cam.position = CAMERA_CENTER
 	add_child(cam)
 	cam.make_current()
 
@@ -128,7 +133,7 @@ func _build_interactables() -> void:
 
 
 func _build_endless_portal() -> void:
-	var door: HubInteractable = _make_sprite_interactable("EndlessPortal", _endless_label_text(), ENDLESS_PORTAL_TEXTURE, Vector2(96, 156))
+	var door: HubInteractable = _make_sprite_interactable("EndlessPortal", _endless_label_text(), ENDLESS_PORTAL_TEXTURE, Vector2(96, 240))
 	door.interacted.connect(_on_endless_portal_interacted)
 	_endless_door = door
 
@@ -138,12 +143,12 @@ func _endless_label_text() -> String:
 
 
 func _build_hero_book() -> void:
-	var book: HubInteractable = _make_sprite_interactable("HeroBook", "HERO SELECT", HERO_BOOK_TEXTURE, Vector2(256, 156))
+	var book: HubInteractable = _make_sprite_interactable("HeroBook", "HERO SELECT", HERO_BOOK_TEXTURE, Vector2(256, 240))
 	book.interacted.connect(_on_hero_book_interacted)
 
 
 func _build_dungeon_portal() -> void:
-	var portal: HubInteractable = _make_sprite_interactable("DungeonPortal", "DUNGEON", DUNGEON_PORTAL_TEXTURE, Vector2(416, 156))
+	var portal: HubInteractable = _make_sprite_interactable("DungeonPortal", "DUNGEON", DUNGEON_PORTAL_TEXTURE, Vector2(416, 240))
 	portal.interacted.connect(_on_dungeon_portal_interacted)
 
 
