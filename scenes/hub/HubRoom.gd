@@ -24,10 +24,19 @@ const ENDLESS_POS := Vector2(270, 1320)
 const HEROBOOK_POS := Vector2(540, 1320)
 const DUNGEON_POS := Vector2(810, 1320)
 
-const FLOOR_LEFT: int = 150
-const FLOOR_RIGHT: int = 930
-const FLOOR_TOP: int = 1440
-const FLOOR_BOTTOM: int = 1830
+# Walkable rectangle expanded to match the visible floor area in the
+# 1080x1920 viewport. The earlier 780x390 box was tight — player would
+# bump an invisible wall well inside the visible floor.
+const FLOOR_LEFT: int = 100
+const FLOOR_RIGHT: int = 980
+const FLOOR_TOP: int = 1100
+const FLOOR_BOTTOM: int = 1880
+
+# Hub move speed multiplier. Character stats.move_speed is balanced for
+# 360-tall gameplay viewports; in this 1920-tall hub the same px/sec is
+# 3x slower relative to screen. 3x mul brings the hub-walking feel back
+# in line.
+const HUB_SPEED_MUL: float = 3.0
 
 const PLAYER_SCENE := preload("res://scenes/player/Player.tscn")
 const CHARACTER_SCREEN_SCENE := preload("res://scenes/hub/CharacterScreen.tscn")
@@ -149,6 +158,7 @@ func _spawn_hub_player() -> void:
 	var stats: PlayerStats = GameState.get_character_base_stats(GameState.selected_character)
 	if stats != null:
 		p.stats = stats
+	p.move_speed_mul = HUB_SPEED_MUL
 	_world.add_child(player)
 	player.global_position = PLAYER_SPAWN_POS
 
