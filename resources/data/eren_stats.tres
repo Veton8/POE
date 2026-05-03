@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://b5erenstats"]
 
 [ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
-[ext_resource type="SpriteFrames" uid="uid://b5erenfr" path="res://art/characters/eren/eren_frames.tres" id="2_fr"]
+[ext_resource type="SpriteFrames" uid="uid://b5erenfr_sheet" path="res://art/characters/eren/eren_frames_sheet.tres" id="2_fr"]
 [ext_resource type="PackedScene" uid="uid://b5plybul001" path="res://scenes/projectiles/PlayerBullet.tscn" id="3_bul"]
 [ext_resource type="PackedScene" uid="uid://b5ab_dash" path="res://scenes/abilities/DashAbility.tscn" id="4_q"]
 [ext_resource type="PackedScene" uid="uid://b5ab_thunderspear" path="res://scenes/abilities/ThunderSpearAbility.tscn" id="5_w"]
@@ -19,6 +19,8 @@ crit_chance = 0.10
 crit_multiplier = 1.8
 detection_radius = 140.0
 frames = ExtResource("2_fr")
+sprite_offset = Vector2(0, 32)
+sprite_scale = Vector2(1, 1)
 bullet_scene = ExtResource("3_bul")
 ability_q = ExtResource("4_q")
 ability_w = ExtResource("5_w")

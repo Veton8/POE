@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://b5gojofr_sheet"]
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://b5tanjirofr_sheet"]
 
-[ext_resource type="Texture2D" path="res://art/characters/gojo/gojo_sheet.png" id="1_sheet"]
+[ext_resource type="Texture2D" path="res://art/characters/tanjiro/tanjiro_sheet.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="atlas_id_0"]
 atlas = ExtResource("1_sheet")

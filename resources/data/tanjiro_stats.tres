@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://cyqp3l2nrlapk"]
 
 [ext_resource type="Script" path="res://resources/PlayerStats.gd" id="1_ps"]
-[ext_resource type="SpriteFrames" uid="uid://b5tanjirofr" path="res://art/characters/tanjiro/tanjiro_frames.tres" id="2_fr"]
+[ext_resource type="SpriteFrames" uid="uid://b5tanjirofr_sheet" path="res://art/characters/tanjiro/tanjiro_frames_sheet.tres" id="2_fr"]
 [ext_resource type="PackedScene" uid="uid://b5plybul_fire" path="res://scenes/projectiles/PlayerBulletFire.tscn" id="3_bul"]
 [ext_resource type="PackedScene" uid="uid://b5ab_hinokami" path="res://scenes/abilities/HinokamiSlashAbility.tscn" id="4_q"]
 [ext_resource type="PackedScene" uid="uid://b5ab_heal" path="res://scenes/abilities/HealAbility.tscn" id="5_w"]
@@ -19,6 +19,8 @@ crit_chance = 0.12
 crit_multiplier = 1.8
 detection_radius = 150.0
 frames = ExtResource("2_fr")
+sprite_offset = Vector2(0, 32)
+sprite_scale = Vector2(1, 1)
 bullet_scene = ExtResource("3_bul")
 ability_q = ExtResource("4_q")
 ability_w = ExtResource("5_w")
