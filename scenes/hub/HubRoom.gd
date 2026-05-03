@@ -7,32 +7,34 @@ extends Node2D
 # Three interactables in a horizontal row across the floor:
 #   ENDLESS rift (left) - HERO book (centre) - DUNGEON portal (right)
 
-const PORTRAIT_W: int = 360
-const PORTRAIT_H: int = 640
+const PORTRAIT_W: int = 720
+const PORTRAIT_H: int = 1280
 
-# Layout in SubViewport game-pixel coordinates.
-const CAMERA_POS := Vector2(180, 320)
-const BG_CENTER := Vector2(180, 320)
-const PLAYER_SPAWN_POS := Vector2(180, 540)
-const ENDLESS_POS := Vector2(90, 440)
-const HEROBOOK_POS := Vector2(180, 440)
-const DUNGEON_POS := Vector2(270, 440)
+# Layout in SubViewport game-pixel coordinates. SubViewport is 2x what we
+# had before so 128px-cell character (Levi at high detail) reads as the
+# same proportion of viewport as the 64px version did at 360x640.
+const CAMERA_POS := Vector2(360, 640)
+const BG_CENTER := Vector2(360, 640)
+const PLAYER_SPAWN_POS := Vector2(360, 1080)
+const ENDLESS_POS := Vector2(180, 880)
+const HEROBOOK_POS := Vector2(360, 880)
+const DUNGEON_POS := Vector2(540, 880)
 
 # Walkable rectangle - players move on the floor band beneath the
 # interactable row, between the side walls.
-const FLOOR_LEFT: int = 50
-const FLOOR_RIGHT: int = 310
-const FLOOR_TOP: int = 480
-const FLOOR_BOTTOM: int = 610
+const FLOOR_LEFT: int = 100
+const FLOOR_RIGHT: int = 620
+const FLOOR_TOP: int = 960
+const FLOOR_BOTTOM: int = 1220
 
 const PLAYER_SCENE := preload("res://scenes/player/Player.tscn")
 const CHARACTER_SCREEN_SCENE := preload("res://scenes/hub/CharacterScreen.tscn")
 const DUNGEON_SELECT_SCENE := preload("res://scenes/hub/DungeonSelectScreen.tscn")
 const VIRTUAL_JOYSTICK_SCENE := preload("res://scenes/ui/VirtualJoystick.tscn")
 const HUB_ROOM_TEXTURE := preload("res://art/hub/hub_room_portrait.png")
-const HERO_BOOK_TEXTURE := preload("res://art/hub/hero_book_small.png")
-const DUNGEON_PORTAL_TEXTURE := preload("res://art/hub/dungeon_portal_small.png")
-const ENDLESS_PORTAL_TEXTURE := preload("res://art/hub/endless_portal_small.png")
+const HERO_BOOK_TEXTURE := preload("res://art/hub/hero_book_med.png")
+const DUNGEON_PORTAL_TEXTURE := preload("res://art/hub/dungeon_portal_med.png")
+const ENDLESS_PORTAL_TEXTURE := preload("res://art/hub/endless_portal_med.png")
 const ENDLESS_SCENE_PATH := "res://scenes/modes/Endless.tscn"
 
 @onready var ui_layer: CanvasLayer = $UILayer
@@ -179,14 +181,14 @@ func _make_sprite_interactable(node_name: String, label: String, texture: Textur
 	var inter: HubInteractable = HubInteractable.new()
 	inter.name = node_name
 	inter.label_text = label
-	inter.label_offset = Vector2(0, -44)
+	inter.label_offset = Vector2(0, -88)
 	var sprite: Sprite2D = Sprite2D.new()
 	sprite.name = "Sprite2D"
 	sprite.texture = texture
 	inter.add_child(sprite)
 	var coll: CollisionShape2D = CollisionShape2D.new()
 	var shape: CircleShape2D = CircleShape2D.new()
-	shape.radius = 28.0
+	shape.radius = 56.0
 	coll.shape = shape
 	inter.add_child(coll)
 	inter.position = pos
