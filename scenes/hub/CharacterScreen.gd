@@ -166,7 +166,11 @@ func _on_select() -> void:
 		return
 	GameState.selected_character = char_id
 	GameState.save()
-	_refresh()
+	Events.selected_character_changed.emit(char_id)
+	# Close the overlay immediately so the player sees the new character in
+	# the hub without a second click. HubRoom._close_overlay respawns the
+	# hub player from the new GameState.selected_character.
+	closed.emit()
 
 
 func _on_back() -> void:

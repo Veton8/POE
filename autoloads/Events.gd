@@ -45,6 +45,9 @@ signal item_acquired(item: Dictionary)
 signal character_upgraded(char_name: String, new_level: int)
 
 @warning_ignore("unused_signal")
+signal selected_character_changed(char_name: String)
+
+@warning_ignore("unused_signal")
 signal run_completed(victory: bool, stats: Dictionary)
 
 # Per-run telemetry — emitted from gameplay so RunManager can tally rewards
